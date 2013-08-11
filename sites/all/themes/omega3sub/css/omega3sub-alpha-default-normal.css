@@ -47,7 +47,7 @@ margin-right: 59px;
   padding: 0 98px 0 0;
 }
 #region-menu  .menu li{
-	display: inline-block;
+	display: inline;
 margin-right: 0;
 padding-left: 0;
 padding-top: 0;

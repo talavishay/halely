@@ -23,10 +23,12 @@ Drupal.behaviors.halely_omega_subthemeExampleBehavior = {
     
 		jQuery(".isotope-element").bind("mouseover", function(e){
 		    that = jQuery(e.currentTarget);
+		    jQuery(".views-field-title,.views-field-type", that).removeClass("fadeout").addClass("fadein");
+		    
 			if(!jQuery("html").hasClass("no-csstransforms3d")){
 				var transform = "transform";
 			} 
-    		jQuery(".views-field-title,.views-field-type", that).removeClass("fadeout").addClass("fadein");
+    		
    		    if(typeof(that.attr("trans")) === "undefined" || that.attr("trans") === ""){    	
    				if (transform !== "transform"){
     				var t = "matrix(1, 0, 0, 1, "+jQuery(that).css("translate").toString(',')+")";	
@@ -52,12 +54,13 @@ Drupal.behaviors.halely_omega_subthemeExampleBehavior = {
     			}    	    
    			}
 		}).bind("mouseout", function(e){
+			jQuery(".views-field-title,.views-field-type", that).addClass("fadeout").removeClass("fadein");
 			that = jQuery(e.currentTarget);	
 			t = that.attr("trans");	
 			jQuery(that).css({transform : t ,"z-index":"1"}).removeClass("shadow");	    
 			jQuery(that).css({"-webkit-transform"  : t, "z-index":"1"}).removeClass("shadow");	    
 			// jQuery(that).css({});
-		    jQuery(".views-field-title,.views-field-type", that).addClass("fadeout").removeClass("fadein");
+		    
 		});
 	
 	if(window.location.pathname === "/"){	

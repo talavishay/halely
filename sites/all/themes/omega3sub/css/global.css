@@ -153,6 +153,12 @@ top: 0;
 	transition-duration: 1s;
 	 
 }
+.no-canvas .isotope-element .views-field-title.fadein{
+	display: block;
+}
+.no-canvas .isotope-element .views-field-type.fadeout{
+display: none;
+}
 .shadow{
 	box-shadow: 0 0 0px 5px white, 0 0 10px 10px black;
 }
