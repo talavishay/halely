@@ -1,0 +1,29 @@
+<?php
+function halely_views_api() {
+  return array(
+    'api' => 3,
+     'path' => drupal_get_path('module', 'halely') . '/views'
+  );
+}
+function halely_views_pre_view($view, $display_id, $args){
+	if($view->name === "project"){
+			
+	}		
+}
+function  halely_menu(){
+ $items["get_node/%"] = array(
+        'page callback' => 'get_node',
+        'access callback' => 1,
+        'page arguments' => array(1),
+        'type' => MENU_CALLBACK,
+        
+    );
+     
+	return $items;
+}
+
+function get_node($nid){
+	 
+    print  render(node_view(node_load($nid)));
+  
+}

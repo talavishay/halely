@@ -1,0 +1,22 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/halely\/htdocs\/sites\/all\/themes\/test\/sass\/layouts\/oneCol\/oneCol\.layout\.scss}line{font-family:\000031}}
+.l-page {
+  margin: 0 auto;
+  width: 960px;
+  background: white;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/halely\/htdocs\/sites\/all\/themes\/test\/sass\/layouts\/oneCol\/oneCol\.layout\.scss}line{font-family:\000036}}
+.l-content {
+  width: 765px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/halely\/htdocs\/sites\/all\/themes\/test\/sass\/layouts\/oneCol\/oneCol\.layout\.scss}line{font-family:\0000310}}
+.l-content, aside {
+  float: right;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/www\/halely\/htdocs\/sites\/all\/themes\/test\/sass\/layouts\/oneCol\/oneCol\.layout\.scss}line{font-family:\0000313}}
+aside {
+  width: 100px;
+  clear: left;
+}

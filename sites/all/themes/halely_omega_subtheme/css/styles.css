@@ -1,0 +1,260 @@
+/*******************************************************************************
+ * style.scss
+ *
+ * This file shouldn't directly contain any SCSS code, instead it only serves to
+ * combine the SCSS contained in other Sass partials through @import directives.
+ *
+ * BASE............Styling for common HTML and Drupal elements.
+ * LAYOUT..........Styles for the page structure that contain components.
+ * COMPONENTS......Components, their modifiers and sub-components.
+ ******************************************************************************/
+/*******************************************************************************
+ * _utils.scss
+ *
+ * Sass offers come very useful features, these include variables functions and
+ * mixins. Extensions such as Compass and Susy can also be used to provide extra
+ * functions and mixins to be used throughout the theme. This file acts as a
+ * single place for defining these things, which can then be accessed by
+ * importing _utils.scss where required. The following should be defined in this
+ * file:
+ * - Custom Sass mixins for the theme.
+ * - Custom Sass functions for the theme.
+ * - Overriding the default variables provided by extensions such as Compass.
+ * - Defining new variables for:
+ *      - Colors.
+ *      - Font sizes and families.
+ *      - Layout and grid sizing.
+ ******************************************************************************/
+/*******************************************************************************
+<<<<<<< HEAD
+ * _base.scss
+ *
+ * Base styles define the default look for HTML and common Drupal elements.
+ *
+ * These rules will generally be made up of element selectors for HTML elements
+ * such as headings, paragraphs and lists. Common Drupal elements such as form
+ * items, collapsible fieldsets and messages should be included in this partial.
+ *
+ * The styleguide module (http://drupal.org/project/styleguide) gives you a good
+ * overview of Drupal's common elements for styling. By setting a solid baseline
+=======
+ * _base.scss 
+
+ * Base styles define the default look for HTML and common Drupal elements. 
+ *
+ * These rules will generally be made up of element selectors for HTML elements
+ * such as headings, paragraphs and lists. Common Drupal elements such as form 
+ * items, collapsible fieldsets and messages should be included in this partial.
+ *
+ * The styleguide module (http://drupal.org/project/styleguide) gives you a good
+ * overview of Drupals common elements for styling. By setting a solid baseline
+>>>>>>> sandbox/7.x-4.x
+ * before adding any more specific customisations you ensure that as any new
+ * features are added they will be correctly styled without any extra work.
+ ******************************************************************************/
+/*******************************************************************************
+ * _layout.scss
+ *
+ * The layout of the major regions (usually, but not necessarily Drupal regions)
+ * that components will be placed within. Layout styles for the theme's
+ * components should not be placed here and should instead be kept with the
+ * relevant SCSS for that component.
+ ******************************************************************************/
+/*******************************************************************************
+ * _components.scss
+ *
+ * Imports more partials that contain full components (modules in SMACSS), their
+ * sub-components and modifiers.
+ *
+ * Components are discrete parts of your page that should sit within the regions
+ * of your layouts. You should try to abstract your components as much as
+ * possible to promote reuse throughout the theme. Components should be flexible
+ * enough to respond to any width and should never rely on context
+ * (e.g. .sidebar-first .component) for styling. This allows modules to be
+ * placed throughout the theme with no risk of them breaking.
+ *
+ * If you find you need to change the look of a component depending on it's
+ * context you should avoid using context based classes at all costs. Instead it
+ * is better to add another "modifier" class to the component to alter the
+ * styling. Again, this promotes reuse.
+ *
+ * Sub-components are the individual parts that make up a component. As a
+ * general rule, adding a class to target a sub-component is a much better
+ * option than using descendant selectors or element selectors. In many cases
+ * sub-components can be made more reusable by making them components in their
+ * own right, so they can then be used within other components.
+ *
+ * Almost everything that doesn't belong in base should be made a component.
+ * Here's some common examples throughout Drupal:
+ *
+ * - Blocks
+ * - Content Types - For example, you may have a generic node component that
+ *      contains sub-components for the submitted by line and links. Specific
+ *      components can then be created for each content type to style the
+ *      specifics of each. Finally, by using entity view modes you can easily
+ *      apply modifications based on the .node-[view-mode] classes.
+ * - Forms - For instance the log in form.
+ * - Views - Each views output style could be made into a component, the content
+ *       of each row should be provided my a view mode styled by it's component
+ *       CSS. Exposed filter forms, views pagers and other views elements are
+ *       also good candidates for components.
+ ******************************************************************************/
+@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
+*{
+font-family: "Alef Hebrew",
+               “Helvetica Neue”,
+               Helvetica,
+               Arial,
+               sans-serif;}
+.masonry, .masonry .masonry-brick {
+  transition-duration: 1s;
+}
+/*.field--name-field-gallery {
+    margin: 0 auto;
+    width: 800px;
+}
+.field-slideshow-controls {
+  position: absolute;
+right: -4%;
+top: 50%;
+width: 108%;
+z-index: 101;
+}
+
+.field-slideshow-controls .next {
+    float: left;
+}
+.field-slideshow-controls > a:hover{
+    box-shadow: 1px 1px 11px 4px #b93f3f;
+}
+
+    
+.field-slideshow-controls > a{
+    border: 2px solid gray;
+border-radius: 10px 10px 10px 10px;
+color: white;
+outline: none;
+font-size: 2em;
+padding: 0 5px;
+text-decoration: none;
+vertical-align: middle;
+background-image: -moz-repeating-radial-gradient(#000, #000 -7%, #fff);
+text-shadow: 1px 1px 1px black;
+font-weight: bold;
+box-shadow: 1px 1px 11px 4px gray;
+}
+.field-slideshow-wrapper {
+    height: 600px;
+    position: relative;
+    width: 800px;
+}*/
+#block-system-main-menu .menu li  {
+  display: inline;
+  margin-left:  10px;
+}
+.breadcrumb,
+#block-system-main-menu h2 {
+	display:none;
+}
+
+header .l-region--header li:not(.last) a:after{
+content: ":";
+ padding-right: 10px;
+}
+header .l-region--header li:nth-child(6) a,
+header .l-region--header li.last a{
+/*font-size :  20px;*/
+}
+/* menu */
+#block-system-main-menu a.active-trail,
+.node-type-reshet #reshet,
+.node-type-app #app ,
+.node-type-draw #draw ,
+.node-type-branding #branding ,
+.node-type-photography #phtography ,
+.node-type-blog #blog ,
+.page-contact #contact {
+  text-shadow: 2px -2px 2px black;
+}
+.hover_action{
+	position: relative;
+}
+.hover_action .type {
+	top:0px;
+	bottom:auto;
+}
+.hover_action .title {
+    bottom: 0;
+    top: auto;
+}
+.hover_action > .type, .hover_action > .title {
+    position: absolute;
+    display: inline-block;
+    left: 0 !important;
+    right: auto;
+    text-align: left;
+    background: navy;
+    color: white;
+    padding : 3px;
+    
+}
+.views-field.views-field-colorbox img {
+ 
+    height: inherit;
+ 
+}
+#isotope-container{
+	overflow: visible !important;
+}
+.isotope-element{	
+	/*width: 184px !important;*/
+	width: 184px ;
+	height: 184px ;
+	margin:0px;
+	background-color: white;
+}
+.view-reshet #isotope-container{
+	background-color:#E5E9EC;
+}
+.isotope-element {	
+	border:2px solid #045870;
+	margin: 5px;
+}
+.isotope-element img {
+  /*margin: 0 auto;*/
+  text-align: center;
+      height: 100% !important;
+    margin: 0 auto;
+    width: 100% !important;
+}
+.isotope-element .views-field-title{
+	bottom:0px;
+}
+.isotope-element .views-field-type{
+	top: 0px;
+}
+.isotope-element .views-field-title,
+.isotope-element .views-field-type{
+	/*display:none;*/
+	opacity : 0;
+	position: absolute;
+	left: 0px;
+	text-align:left;
+	padding: 3px;
+	background-color: #045870;
+}
+.isotope-element .views-field-title.fadein,
+.isotope-element .views-field-type.fadein{
+	opacity:1;
+	transition-duration: 0.5s;
+	 
+}
+.isotope-element .views-field-title.fadeout,
+.isotope-element .views-field-type.fadeout{
+	opacity:0;
+	transition-duration: 1s;
+	 
+}
+.shadow{
+	box-shadow: 0 0 0px 10px white, 0 0 16px 18px black;
+}

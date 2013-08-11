@@ -1,0 +1,239 @@
+/* This file will hold styles that are loaded using the same media query as the normal grid. */
+/* If you are using the default media queries provided by Omega, these styles will also
+ *  apply to the widescreen layout unless they are overridden by the widescreen styles. */
+
+/*
+ * region-branding
+ * 		+
+ * site-name-slogan
+ * */
+#region-branding {
+  max-height: 63px;
+}
+.site-name {
+  margin-top: 17px;
+}
+.site-name-slogan {
+  float: right;
+margin-bottom: 12px;
+margin-right: 59px;
+}
+#region-branding a {
+  display: block;
+  font-size: 22px;
+  font-weight: normal;
+  letter-spacing: 0.9px;
+  transform: scaleY(1.1);
+}
+/*
+ * Main menu
+ * */
+#region-menu.grid-12 {
+	height: 30px;
+	margin: 0;
+	padding: 0;
+	right: -30px;
+	width: 1020px ;
+	border-style: solid; 
+	border-width: 1px 0px 0px; 
+	-moz-border-image: url(/sites/all/themes/omega3sub/images/menu_border.png) 1 0 0 repeat; 
+	-webkit-border-image: url(/sites/all/themes/omega3sub/images/menu_border.png) 1 0 0 repeat; 
+	-o-border-image: url(/sites/all/themes/omega3sub/images/menu_border.png) 1 0 0 repeat; 
+	border-image: url(/sites/all/themes/omega3sub/images/menu_border.png) 1 0 0 fill repeat;
+	/*border-top:1px dotted gray;*/
+}        
+
+#region-menu .menu {
+  padding: 0 98px 0 0;
+}
+#region-menu  .menu li{
+	display: inline-block;
+margin-right: 0;
+padding-left: 0;
+padding-top: 0;
+margin-left: 3px;
+}
+#region-menu  .menu li a {
+  font-size: 18px;
+letter-spacing: 2px;
+line-height: 24px;
+text-decoration: none;
+}
+#region-menu  .menu  li:not(.last) a:after{
+padding-right: 7px;
+}
+#region-menu .menu li:nth-child(7){
+	margin-right: 63.7px;
+} 
+#region-menu .menu li:nth-child(1n+7) a {
+font-size: 16px;
+letter-spacing: 0.7px;
+}
+#region-menu .menu li:nth-child(n+7) a:after {
+  padding-right: 5px;
+}
+/*
+ * block- contact
+ * */
+#block-block-2 {
+	float: left;
+	font-size: 11px;
+}
+/*
+ * section-content
+ * */
+#section-content {
+  min-height: 330px;
+}
+
+#region-content.grid-12 {
+  display: block;
+  float: none;
+  margin: 0 auto !important;
+  width: 896px;
+}
+#region-content.grid-10 {
+  margin: auto 5px;
+  width: 790px;
+}
+/*
+ * sidebar first
+ * */
+aside#region-sidebar-first {
+  left: -7px;
+margin-left: 0;
+position: relative;
+top: -11.6px;
+width: 139px;
+float: left;
+}
+[class*="block-menus"] .block-inner .content {
+  min-height: 320px;
+}
+#region-sidebar-first [class*=block-menus]{
+	text-align: left;
+}
+[class*=block-menus] .block-title{
+	font-size: 18px;
+font-weight: bold;
+letter-spacing: 2.2px;
+line-height: 24px;
+margin-bottom: 12px;
+margin-right: 12px;
+padding-left: 8px;	
+}
+[class*=block-menus] .views-field-title{
+font-size:12px;
+padding: 0 6px; 	
+}
+[class*=block-menus] .views-field-title {
+  line-height: 11px;
+margin-bottom: 10px;
+position: relative;
+top: -4px;
+}
+/*
+ * fotter
+ * */
+}
+#block-block-1 {
+  font-size: 12px;
+}
+/*
+ * .view-reshet
+ * */
+.view-reshet {
+	padding:  7px 15px;
+	min-height:330px;
+}
+.isotope-element{		
+	width: 104px ;
+	height: 104px ;
+	margin:0px;
+	border:2px solid white;
+}
+/*
+ * blog
+ * */
+.page-blog #region-branding {
+  background: url("/sites/all/themes/omega3sub/images/header_blog.jpg") no-repeat scroll 0 0 / contain  transparent;
+  max-height: 287px;
+  height: 287px;
+  margin: 0;
+  width: 100%;
+}
+
+.page-blog #region-menu.grid-12 {
+  border-image: url("/sites/all/themes/omega3sub/images/menu_border.png") 1 0 0 0 fill repeat repeat;
+  border-style: solid;
+  border-width: 1px 0 0;
+  height: 30px;
+  margin: 0;
+  width: 100%;
+  right: auto;
+}
+#block-menu-menu-blog .menu li a {
+    font-size: 14px;
+  
+}
+#block-menu-menu-blog .menu {
+  padding: 0 13px 0 0;
+}
+#block-menu-menu-blog .menu li a {
+  margin-left: 6px;
+  padding-left: 4px;
+}
+#block-menu-menu-blog .menu .last.leaf a {
+  border-left-width: 0;
+font-size: 13px;
+}
+#block-menu-menu-blog .menu .last.leaf  {
+float: left;
+}
+.page-blog .block-title {
+ display: inline;
+font-size: 16px;
+font-weight: normal;
+padding-bottom: 6px;
+padding-top: 7px;
+}
+.page-blog .views-summary li a {
+  font-size: 14px;
+}
+.page-blog .item-list ul li {
+  margin: 0;
+}
+
+ 
+.page-blog #block-views-exp-test-page-1 > div,
+.page-blog #block-views-exp-test-page-1 .block-inner, 
+.page-blog #block-views-exp-test-page-1 .block-inner .content,
+.page-blog #block-views-exp-test-page-1 form > div,
+.page-blog #views-exposed-form-test-page-1  ,
+.page-blog .views-exposed-form, 
+.page-blog .views-exposed-widgets, 
+.page-blog #views-exposed-form-test-page-1 #edit-combine-wrapper, 
+.page-blog #views-exposed-form-test-page-1 #edit-combine-wrapper div {
+  display: inline !important;
+float: none;
+margin: 0;
+padding: 0;
+}
+#block-views-exp-test-page-1 .block-inner {
+/*
+  position: relative;
+  right: -15px;*/
+
+}
+.page-blog h2.node-title a  {
+  font-size: 18px;
+   
+}
+#block-views-exp-test-page-1 {
+  margin-top: 16px;
+}
+/*blog
+ * search filters*/
+#edit-combine {
+ width: 50%;     
+}

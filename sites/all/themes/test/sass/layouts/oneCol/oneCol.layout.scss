@@ -1,0 +1,16 @@
+.l-page{
+ margin:0 auto ;
+ width:960px;
+ background:white; 
+}
+.l-content{
+width:765px;
+}
+
+.l-content, aside {
+  float: right;
+}
+aside {
+  width:100px;
+  clear: left;
+}

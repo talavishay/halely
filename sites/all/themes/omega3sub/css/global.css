@@ -1,0 +1,270 @@
+/* This file will hold styles for the mobile version of your website (mobile first). */
+/* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
+*{
+font-family: "Alef Hebrew",“Helvetica Neue”,Helvetica,Arial,sans-serif !important;
+}
+.masonry, .masonry .masonry-brick {
+  transition-duration: 4s;
+}
+a
+
+#region-branding a {  
+	color:  #017b9e;
+}
+.logo-img {
+  margin-left: 45px;
+position: relative;
+top: 4px;
+z-index: 1;
+}
+img#logo {
+  transform: scaleY(0.9);
+}
+.region-menu {
+	background-color: #E1EFEF;
+}
+#region-menu  .menu li{
+	list-style: none;
+}
+#region-menu  .menu li a {
+	color: #045971;
+}
+
+#region-menu  .menu  li:not(.last) a:after{
+content: ":";
+}
+#region-menu .menu li:nth-child(6) a:after {
+  content: "";
+}
+#region-menu .menu li:nth-child(-1n+6) a.active-i {
+  color: #eeaa2e;
+  font-weight: bold;
+}
+#about.active-i  {
+ color: #FD0640 !important;
+ font-weight: bold;
+}
+#Partners.active-i {
+  color: #547104 !important;
+  font-weight: bold;
+}   
+
+#blog.active{
+color: #045971 !important;
+font-weight: bold;
+}
+#contact.active, #contact {
+  color: #EEAA2E !important;
+  font-size: 14px !important;
+  font-weight: bold;
+  vertical-align: bottom;
+}
+/*
+ * zone-content
+ * */
+.zone-content.container-12 {
+  padding-top: 20px;
+}
+/*
+ * Isotope
+ * */
+.hover_action{
+	position: relative;
+}
+.hover_action .type {
+	top:0px;
+	bottom:auto;
+}
+.hover_action .title {
+    bottom: 0;
+    top: auto;
+}
+.hover_action > .type, .hover_action > .title {
+    position: absolute;
+    display: inline-block;
+    left: 0 !important;
+    right: auto;
+    text-align: left;
+    background: navy;
+    color: white;
+    padding : 3px;
+    
+}
+.views-field.views-field-colorbox img {
+ 
+    height: inherit;
+ 
+}
+#isotope-container{
+	overflow: visible !important;
+}
+.isotope-element{	
+	background-color: white;
+}
+.view-reshet {
+	background-color:#E5E9EC;	
+}
+
+.isotope-element img {
+  /*margin: 0 auto;*/
+  text-align: center;
+      height: 100% !important;
+    margin: 0 auto;
+    width: 100% !important;
+}
+.isotope-element .views-field-title{
+	bottom: 2px;
+	width: 100%;
+}
+.isotope-element[data-category=שותפים] .fadein{
+	background-color:#547104 !important;
+}	
+.isotope-element[data-category=אודות] .fadein{
+	background-color:#fd0640 !important;
+}	
+
+.isotope-element .views-field-type{
+	font-weight: bold;
+letter-spacing: 1px;
+padding-right: 10px !important;
+top: 0;
+}
+.isotope-element .views-field-title,
+.isotope-element .views-field-type{
+	/*display:none;*/
+	opacity : 0;
+	position: absolute;
+	left: 0px;
+	text-align:left;
+	padding: 0px 3px;
+	background-color: #045870;
+	   line-height: 15px;
+}
+.isotope-element .views-field-title.fadein,
+.isotope-element .views-field-type.fadein{
+	opacity:1;
+	transition-duration: 0.5s;
+	 
+}
+.isotope-element .views-field-title.fadeout,
+.isotope-element .views-field-type.fadeout{
+	opacity:0;
+	transition-duration: 1s;
+	 
+}
+.shadow{
+	box-shadow: 0 0 0px 5px white, 0 0 10px 10px black;
+}
+.delayImg {opacity:0;}
+#cboxOverlay {
+  background: none repeat scroll 0 0 #000000;
+  opacity: 0.7 !important;
+}
+/*sidebar first block-menus*/
+[class*=block-menus] .block-inner .content{
+	border-right: 1.5px dotted #FA9403; 
+}
+[class*=block-menus] .views-field-title{
+	color:#045971;
+	cursor: pointer;
+}
+
+[class*=block-menus] .block-title,
+[class*=block-menus] .views-field-title.active{
+	color:#fa9403;
+}
+[class*=block-menus] .block-title{
+border-bottom: 1.5px dotted #FA9403;	
+}
+
+/*
+ * block-contact
+ * */
+#block-block-2 a,#block-block-2 {
+ color: #DA8E05;
+font-weight: bold;
+text-decoration: none;
+}
+#block-block-2 a[href*="facebook"] {
+  background: url("/sites/all/themes/omega3sub/images/facebook.png") no-repeat scroll 0 0 transparent;
+  display: inline-block;
+  height: 24px;
+  width: 25px;
+  text-indent: -9999px;
+}
+#block-block-2 a[href*="google"] {
+  background: url("/sites/all/themes/omega3sub/images/google.png") no-repeat scroll 0 0 transparent;
+  display: inline-block;
+  height: 24px;
+  width: 25px;
+  text-indent: -9999px;
+}
+/*
+ * fotter
+ * */
+#block-block-1 {
+  color: #EEAA2E;
+}
+/*
+ * blog
+ * */
+.page-blog .logo-img,.page-blog .site-name {
+  display: none;
+}
+#block-menu-menu-blog .menu li a {
+  color: #024659;
+    border-left: solid 1px white;
+}
+.page-blog #region-menu .menu li:not(.last) a:after {
+  display: none;
+}
+.page-blog aside#region-sidebar-first{
+	width:148px;
+}
+.page-blog #region-sidebar-second {
+  margin-left: 0;
+margin-right: 0;
+width: 160px;
+}
+#block-menu-menu-blog .menu .last.leaf a {
+    color: #F94496 !important;
+}
+.page-blog #region-content {
+	border-left: 1px solid #5D5D5D;
+	border-right: 1px solid #5D5D5D;
+}
+.page-blog .region-content-inner {
+  padding: 0 15px 0 7px;
+}
+.page-blog .views-summary li a {
+  color: black;
+    text-decoration: none;
+}
+#block-views-erchives-block, 
+#block-views-blog-block {
+  border-top: dotted 1px black;
+}
+.page-blog #edit-combine {
+  background: url("/sites/all/themes/omega3sub/images/search.jpg") no-repeat scroll 0 0 transparent;
+border: medium none;
+height: 18px;
+padding-left: 30px;
+padding-right: 5px;
+width: 116px;
+}
+.views-exposed-form .views-exposed-widget .form-submit {
+ margin: 0px; 
+}
+.page-blog h2.node-title a  {
+    color: black;
+  text-decoration: none;
+}
+  
+/*blog
+ * search filters*/
+
+#edit-created-wrapper,
+#edit-tid-wrapper{
+	display:none;
+}
