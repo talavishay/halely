@@ -1,12 +1,6 @@
 Drupal.behaviors.halely_omega_subthemeExampleBehavior = {
   attach: function (context, settings) {
-	  	var supportsOrientationChange = "onorientationchange" in window,
-		orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
-		window.addEventListener(orientationEvent, function(e) {
-		        jQuery("#isotope-container [trans]").each(function(i, val){
-		        	jQuery(val).attr("trans", "");
-		        });
-		}, false);
+	  	
   		/*jQuery.getScript("/misc/jquery.ba-bbq.js");*/
     	jQuery(".views-fluidgrid-item-inner .field-content >div").each(function(i, val){
 			var cs = jQuery(val).attr("class"); 
