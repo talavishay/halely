@@ -1,19 +1,104 @@
-jQuery(document).ready(function(){
-	// Drupal.avishay.comment();
-	
-	jQuery("#block-system-main-menu--2 .menu a[href^='\/#']").removeClass("active");
-		
-	if(!jQuery("html").hasClass("no-csstransforms3d")){
-		Drupal.avishay.transform = "transform";
-	}
-	jQuery("[nid]").live("click", function(e){
-			jQuery(".ui-dialog-content").dialog("close").remove();
-			var nid = jQuery(e.currentTarget).attr("nid").trim();
-			open_dialog(nid);
+ Drupal.avishay = {};
+Drupal.avishay.reshet_sidebar_height = function(){
+	var block_menu = jQuery("[class*=block-menus]:visible");
+	var bth = jQuery(".block-title", block_menu).height();
+	var h = jQuery(".view-reshet").height();
+	jQuery(".content", block_menu).css("min-height", h-(bth) );
+}
+function open_popup_node(that, nid){
+	// var dialog= jQuery(".ui-dialog");
+	var dialog= that;
+	jQuery(dialog).load("/get_node/"+nid, function(){				   		
+   		if(jQuery(".field-name-field-gallery .field-items .field-item", dialog).length > 1){
+			jQuery(" .field-name-field-gallery ", dialog).append(jQuery('<div id="nav"></div>'));	   	
+	   		jQuery(" .field-name-field-gallery .field-items", dialog).cycle({
+	   			fx:     'scrollHorz', 						    
+		    	pagerAnchorBuilder: pagerFactory,
+		      	pager:   '#nav', 
+			    timeout: 0, 
+			    rev: true 						    
+		    });
+   		};
+   		var text = jQuery(".node-title", dialog).text();
+   		var wrap_right = jQuery('<div id="wrap_right"></div>').append(jQuery('<div class="title">'+text+'</div>')).append(jQuery(".field-name-body", dialog));
+   		jQuery(".field-name-field-gallery", dialog).after(wrap_right);
+   		jQuery("#wait", dialog).remove();
+   		
+   	});
+}
+function open_dialog(nid) {
+  jQuery('<div></div>').dialog({
+		width: 760,
+		// height: 4	00,
+	 	position: {  
+			my: "center",
+		  	at: "top",
+		  	within: "#isotope-container" 
+	  	},
+	  	resizable: false,
+		modal: true ,
+	  	draggable: false,
+	  	show: "explode",
+		open: function() {
+			jQuery(this).append('<img style="margin: 20px auto;display: block;" id="wait" src="/sites/all/themes/omega3sub/images/busy.gif" />');
+			jQuery('.ui-dialog').prepend(jQuery(".ui-dialog .ui-button"));
+			jQuery(".ui-dialog-titlebar", this).remove();
+ 			open_popup_node(this, nid);
+		 			 
+		},
+	    close: function() {
+	        jQuery(this).dialog('destroy').remove();
+	    }     
+	});
+}
+Drupal.avishay.blog = function(){
+	jQuery(".views-row .teaser").bind("click", function(e){
+		var row = jQuery(e.currentTarget).parents(".views-row");
+		jQuery(".field-name-body", row).show();
+		jQuery(e.currentTarget).hide();
+	});
+}
+Drupal.avishay.about = function(){
+	if(jQuery(".node-type-about").length){
+		var t = jQuery("#block-views-menus-block-6 .block-title").height() ;
+		var h = jQuery("#block-system-main").height();
+		var img = jQuery('<img id="arrow" src="/sites/all/themes/omega3sub/images/studio_arrow.png"/>');
+		var close = jQuery('<div id="close_btn"></div').css({"position": "absolute","left":"10px","top":"10px"}).bind("click", function(){
+			jQuery("#node-about-188 .field-name-body .field-items").hide("slow");					
+			jQuery("#toggle").css("background", "url(/sites/all/themes/omega3sub/images/studio-bird-+.png) no-repeat");
 		});
-	jQuery(window).trigger('hashchange');
-	
-});
+		if(jQuery(".page-node-188").length){
+			var toggle = jQuery('<div id="toggle"></div').css({
+				background: 'url("/sites/all/themes/omega3sub/images/studio-bird-~.png") no-repeat scroll center center transparent',
+				position: "absolute",
+			    right: "155px",
+			    top: "27px",
+				width: "29px",
+				height: "29px",
+				"z-index": 1,
+				cursor: "pointer"
+			}).bind("click", function(e){
+					jQuery("#node-about-188 .field-name-body .field-items").show("slow");
+					jQuery("#toggle").css("background", 'url("/sites/all/themes/omega3sub/images/studio-bird-~.png") no-repeat scroll center center transparent');	
+				});
+		jQuery("#node-about-188 .field-name-body").before(toggle)
+		jQuery("#node-about-188 .field-name-body .field-items .field-item").prepend(img).append(close);;
+			
+		}
+		if(jQuery(".page-node-187").length){
+			var img = jQuery('<img id="about_dog" src="/sites/all/themes/omega3sub/images/about_dog.png"/>');
+			jQuery("#block-views-menus-block-6 .content").after(img);
+			jQuery("#block-views-menus-block-6 .content").height(h-(t+13)-63);
+		} else {
+			jQuery("#block-views-menus-block-6 .content").height(h-(t+13));
+		}
+	}
+}
+
+function pagerFactory(idx, slide) {
+    var s = idx > 2 ? ' style="display:none"' : '';
+    return '<span'+s+'><a href="#">'+(idx+1)+'</a></span>';
+};
 Drupal.behaviors.omega3sub = {
   attach: function (context, settings) {
 	  	if(jQuery("body").hasClass("page-בלוג")){
@@ -195,104 +280,20 @@ Drupal.avishay.get_comments = function(){
 		}); 		 	
 	});
  }
- Drupal.avishay = {};
-Drupal.avishay.reshet_sidebar_height = function(){
-	var block_menu = jQuery("[class*=block-menus]:visible");
-	var bth = jQuery(".block-title", block_menu).height();
-	var h = jQuery(".view-reshet").height();
-	jQuery(".content", block_menu).css("min-height", h-(bth) );
-}
-function open_popup_node(that, nid){
-	// var dialog= jQuery(".ui-dialog");
-	var dialog= that;
-	jQuery(dialog).load("/get_node/"+nid, function(){				   		
-   		if(jQuery(".field-name-field-gallery .field-items .field-item", dialog).length > 1){
-			jQuery(" .field-name-field-gallery ", dialog).append(jQuery('<div id="nav"></div>'));	   	
-	   		jQuery(" .field-name-field-gallery .field-items", dialog).cycle({
-	   			fx:     'scrollHorz', 						    
-		    	pagerAnchorBuilder: pagerFactory,
-		      	pager:   '#nav', 
-			    timeout: 0, 
-			    rev: true 						    
-		    });
-   		};
-   		var text = jQuery(".node-title", dialog).text();
-   		var wrap_right = jQuery('<div id="wrap_right"></div>').append(jQuery('<div class="title">'+text+'</div>')).append(jQuery(".field-name-body", dialog));
-   		jQuery(".field-name-field-gallery", dialog).after(wrap_right);
-   		jQuery("#wait", dialog).remove();
-   		
-   	});
-}
-function open_dialog(nid) {
-  jQuery('<div></div>').dialog({
-		width: 760,
-		// height: 4	00,
-	 	position: {  
-			my: "center",
-		  	at: "top",
-		  	within: "#isotope-container" 
-	  	},
-	  	resizable: false,
-		modal: true ,
-	  	draggable: false,
-	  	show: "explode",
-		open: function() {
-			jQuery(this).append('<img style="margin: 20px auto;display: block;" id="wait" src="/sites/all/themes/omega3sub/images/busy.gif" />');
-			jQuery('.ui-dialog').prepend(jQuery(".ui-dialog .ui-button"));
-			jQuery(".ui-dialog-titlebar", this).remove();
- 			open_popup_node(this, nid);
-		 			 
-		},
-	    close: function() {
-	        jQuery(this).dialog('destroy').remove();
-	    }     
-	});
-}
-Drupal.avishay.blog = function(){
-	jQuery(".views-row .teaser").bind("click", function(e){
-		var row = jQuery(e.currentTarget).parents(".views-row");
-		jQuery(".field-name-body", row).show();
-		jQuery(e.currentTarget).hide();
-	});
-}
-Drupal.avishay.about = function(){
-	if(jQuery(".node-type-about").length){
-		var t = jQuery("#block-views-menus-block-6 .block-title").height() ;
-		var h = jQuery("#block-system-main").height();
-		var img = jQuery('<img id="arrow" src="/sites/all/themes/omega3sub/images/studio_arrow.png"/>');
-		var close = jQuery('<div id="close_btn"></div').css({"position": "absolute","left":"10px","top":"10px"}).bind("click", function(){
-			jQuery("#node-about-188 .field-name-body .field-items").hide("slow");					
-			jQuery("#toggle").css("background", "url(/sites/all/themes/omega3sub/images/studio-bird-+.png) no-repeat");
-		});
-		if(jQuery(".page-node-188").length){
-			var toggle = jQuery('<div id="toggle"></div').css({
-				background: 'url("/sites/all/themes/omega3sub/images/studio-bird-~.png") no-repeat scroll center center transparent',
-				position: "absolute",
-			    right: "155px",
-			    top: "27px",
-				width: "29px",
-				height: "29px",
-				"z-index": 1,
-				cursor: "pointer"
-			}).bind("click", function(e){
-					jQuery("#node-about-188 .field-name-body .field-items").show("slow");
-					jQuery("#toggle").css("background", 'url("/sites/all/themes/omega3sub/images/studio-bird-~.png") no-repeat scroll center center transparent');	
-				});
-		jQuery("#node-about-188 .field-name-body").before(toggle)
-		jQuery("#node-about-188 .field-name-body .field-items .field-item").prepend(img).append(close);;
-			
-		}
-		if(jQuery(".page-node-187").length){
-			var img = jQuery('<img id="about_dog" src="/sites/all/themes/omega3sub/images/about_dog.png"/>');
-			jQuery("#block-views-menus-block-6 .content").after(img);
-			jQuery("#block-views-menus-block-6 .content").height(h-(t+13)-63);
-		} else {
-			jQuery("#block-views-menus-block-6 .content").height(h-(t+13));
-		}
-	}
-}
 
-    function pagerFactory(idx, slide) {
-        var s = idx > 2 ? ' style="display:none"' : '';
-        return '<span'+s+'><a href="#">'+(idx+1)+'</a></span>';
-    };
+jQuery(document).ready(function(){
+	// Drupal.avishay.comment();
+	
+	jQuery("#block-system-main-menu--2 .menu a[href^='\/#']").removeClass("active");
+		
+	if(!jQuery("html").hasClass("no-csstransforms3d")){
+		Drupal.avishay.transform = "transform";
+	}
+	jQuery("[nid]").live("click", function(e){
+			jQuery(".ui-dialog-content").dialog("close").remove();
+			var nid = jQuery(e.currentTarget).attr("nid").trim();
+			open_dialog(nid);
+		});
+	jQuery(window).trigger('hashchange');
+	
+});
