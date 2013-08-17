@@ -250,8 +250,9 @@ font-size: 14px;
 .page-בלוג #views-exposed-form-test-page-1  ,
 .page-בלוג .views-exposed-form, 
 .page-בלוג .views-exposed-widgets, 
-.page-בלוג #views-exposed-form-test-page-1 #edit-combine-wrapper, 
-.page-בלוג #views-exposed-form-test-page-1 #edit-combine-wrapper div {
+.page-בלוג .views-submit-button, 
+.page-בלוג #views-exposed-form-test-page-1 #edit-text-wrapper, 
+.page-בלוג #views-exposed-form-test-page-1 #edit-text-wrapper div {
   display: inline !important;
 float: none;
 margin: 0;

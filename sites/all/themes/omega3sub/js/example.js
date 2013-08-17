@@ -36,7 +36,6 @@ Drupal.avishay.get_comments = function() {
 		});
 	});
 }
-
 Drupal.avishay.reshet_sidebar_height = function() {
 	var block_menu = jQuery("[class*=block-menus]:visible");
 	var bth = jQuery(".block-title", block_menu).height();
@@ -64,7 +63,6 @@ function open_popup_node(that, nid) {
 
 	});
 }
-
 function open_dialog(nid) {
 	jQuery('<div></div>').dialog({
 		width : 760,
@@ -97,6 +95,36 @@ Drupal.avishay.blog = function() {
 		jQuery(".field-name-body", row).show();
 		jQuery(e.currentTarget).hide();
 	});
+	// Blog
+		jQuery(".view-id-blog.view-display-id-block a").each(function(i, val) {
+			jQuery(val).bind("click", function(e) {
+				e.preventDefault();
+				jQuery("#block-views-erchives-block a, #block-views-blog-block a").removeClass("active");
+				jQuery(e.currentTarget).addClass("active");
+				var tid = jQuery(val).attr("href").replace(/\/term\//i, "");
+				jQuery("#block-views-exp-test-page-1 #edit-created-min").val("");
+				jQuery("#block-views-exp-test-page-1 #edit-created-max").val("");
+				jQuery("#block-views-exp-test-page-1 #edit-tid [value=" + tid + "]").attr("selected", "selected");
+				jQuery("#block-views-exp-test-page-1 #edit-tid").change();
+				jQuery("#block-views-exp-test-page-1 #edit-submit-test").click();
+				return false;
+			});
+		});
+		jQuery("#block-views-erchives-block a").each(function(i, val) {
+			jQuery(val).bind("click", function(e) {
+				e.preventDefault();
+				jQuery("#block-views-erchives-block a, #block-views-blog-block a").removeClass("active");
+				jQuery(e.currentTarget).addClass("active");
+				var href = jQuery(val).attr("href").replace(/\/posts-by-date\//i, "");
+				var min_date = href.substr(0, 4) + "-" + href.substr(4, 6);
+				var max_date = min_date + "-31";
+				jQuery("#block-views-exp-test-page-1 #edit-tid [value=All]").attr("selected", "selected");
+				jQuery("#block-views-exp-test-page-1 #edit-created-min").val(min_date);
+				jQuery("#block-views-exp-test-page-1 #edit-created-max").val(max_date).change();
+				jQuery("#block-views-exp-test-page-1 #edit-submit-test").click();
+				return false;
+			});
+		});
 }
 Drupal.avishay.about = function() {
 	if (jQuery(".node-type-about").length) {
@@ -264,34 +292,7 @@ Drupal.behaviors.omega3sub = {
 			});
 			// }).trigger('hashchange');
 		}
-		// Blog
-		jQuery(".view-id-blog.view-display-id-block a").each(function(i, val) {
-			jQuery(val).bind("click", function(e) {
-				e.preventDefault();
-				jQuery("#block-views-erchives-block a, #block-views-blog-block a").removeClass("active");
-				jQuery(e.currentTarget).addClass("active");
-				var tid = jQuery(val).attr("href").replace(/\/term\//i, "");
-				jQuery("#block-views-exp-test-page-1 #edit-created-min").val("");
-				jQuery("#block-views-exp-test-page-1 #edit-created-max").val("");
-				jQuery("#block-views-exp-test-page-1 #edit-tid [value=" + tid + "]").attr("selected", "selected");
-				jQuery("#block-views-exp-test-page-1 #edit-tid").change();
-				return false;
-			});
-		});
-		jQuery("#block-views-erchives-block a").each(function(i, val) {
-			jQuery(val).bind("click", function(e) {
-				e.preventDefault();
-				jQuery("#block-views-erchives-block a, #block-views-blog-block a").removeClass("active");
-				jQuery(e.currentTarget).addClass("active");
-				var href = jQuery(val).attr("href").replace(/\/posts-by-date\//i, "");
-				var min_date = href.substr(0, 4) + "-" + href.substr(4, 6);
-				var max_date = min_date + "-31";
-				jQuery("#block-views-exp-test-page-1 #edit-tid [value=All]").attr("selected", "selected");
-				jQuery("#block-views-exp-test-page-1 #edit-created-min").val(min_date);
-				jQuery("#block-views-exp-test-page-1 #edit-created-max").val(max_date).change();
-				return false;
-			});
-		});
+		
 
 		jQuery(".delayImg").each(function() {
 			this.onload = function() {

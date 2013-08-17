@@ -486,14 +486,42 @@ text-decoration: none;
 margin-top: 20px;
 padding-top: 11px;
 }
-.page-בלוג #edit-combine {
-  background: url("/sites/all/themes/omega3sub/images/search.jpg") no-repeat scroll 0 0 transparent;
+.page-בלוג #edit-text {
+background-position: -22px 0 !important;
 border: medium none;
+box-shadow: none !important;
 height: 18px;
+left: -6px;
 padding-left: 30px;
 padding-right: 5px;
-width: 116px;
+padding-top: 0;
+position: relative;
+width: 94px;
 }
+.page-בלוג #edit-submit-test ,
+.page-בלוג #edit-text {
+  background: url("/sites/all/themes/omega3sub/images/search.jpg") no-repeat scroll 0 0 transparent;
+}
+#edit-text-wrapper{
+	    display: inline !important;
+    overflow: hidden !important;
+    width: 93px !important;
+}
+.page-בלוג #edit-submit-test {
+	border: medium none;
+border-radius: 0 0 0 0;
+font-size: 0;
+height: 18px;
+margin: 0;
+padding: 0;
+width: 23px;
+float: none !important;
+box-shadow: none !important;
+}
+.page-בלוג #edit-submit-test:active {
+	box-shadow: none;
+}
+
 .views-exposed-form .views-exposed-widget .form-submit {
  margin: 0px; 
 }
@@ -516,6 +544,9 @@ margin: 23px 0 33px;
   border-bottom: dotted 1px;
   padding-bottom: 24px;
   
+}
+.comment_amount {
+	cursor: pointer;
 }
 /*blog
  * search filters*/

@@ -27,13 +27,14 @@
   <div class="clearfix">
   	<div class="comment_count">
   		<?php
-  		if($comment_count !== "0" ){
-  			print t("@c comments", array("@c" => $comment_count) );  	  			
+  		if($comment_count !== "0" ){  			
+  			print '<div class="comment_amount" title="'.t("click to read the comments").'">'.t("@c comments", array("@c" => $comment_count) ).'</div>';  	  			
 			if (!empty($content['links'])): ?>
 	      		<nav class="links node-links clearfix">
 	  				<?php print render($content['links']); ?>
 	      		</nav>
     		<?php endif; 
+			
 		} else {
 			if (!empty($content['links'])): ?>
 	      		<nav class="links node-links clearfix" style="display:block">
