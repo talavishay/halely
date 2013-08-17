@@ -18,7 +18,7 @@ Drupal.avishay.comment = function() {
 
 }
 Drupal.avishay.get_comments = function() {
-	jQuery(".views-row article ").each(function(i, val) {
+	jQuery("article ").each(function(i, val) {
 		var nid = jQuery(val).attr("nodenid");
 
 		jQuery(".comment_count", val).bind("click", function(e) {
@@ -173,7 +173,7 @@ function pagerFactory(idx, slide) {
 };
 Drupal.behaviors.omega3sub = {
 	attach : function(context, settings) {
-		if (jQuery("body").hasClass("page-בלוג")) {
+		if (jQuery("body").hasClass("page-בלוג") | jQuery("body").hasClass("node-type-blog") ) {
 			Drupal.avishay.get_comments();
 			Drupal.avishay.blog();
 		}
