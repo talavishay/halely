@@ -121,7 +121,7 @@
     }
     #cboxContent {
       background: #fff;
-      overflow: hidden;
+      /*overflow: hidden;*/
     }
       #cboxError {
         padding: 50px;
@@ -215,8 +215,22 @@
       #cboxClose:hover {
         background-position: -25px -25px;
       }
-#cboxWrapper .node__title {
+#cboxWrapper header {
     position: absolute;
     top: -56px;
+    
 }
-
+#cboxWrapper header a{
+color: #FA9403;
+text-decoration: none;
+font-size: 18px;
+letter-spacing: 1px;
+}
+#cboxWrapper .field-name-field-gallery, 
+#cboxWrapper .field-name-field-gallery > *, 
+#cboxWrapper .field-name-field-gallery > * > *, 
+#cboxWrapper .field-name-field-gallery * > * {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+}

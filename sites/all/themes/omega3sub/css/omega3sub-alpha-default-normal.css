@@ -25,6 +25,9 @@ margin-right: 59px;
   letter-spacing: 0.9px;
   transform: scaleY(1.1);
 }
+.breadcrumb > a {
+  display: none;
+}
 /*
  * Main menu
  * */
@@ -42,25 +45,33 @@ margin-right: 59px;
 	border-image: url(/sites/all/themes/omega3sub/images/menu_border.png) 1 0 0 fill repeat;
 	/*border-top:1px dotted gray;*/
 }        
-
-#region-menu .menu {
-  padding: 0 98px 0 0;
+.region-footer-first-inner > div {
+  display: inline-block;
+  float: right;
 }
-#region-menu  .menu li{
+#block-system-main-menu--2{
+	float: left;
+}
+#region-menu .menu {
+  padding: 0 93px 0 0;
+}
+.menu li{
 	display: inline;
 margin-right: 0;
 padding-left: 0;
 padding-top: 0;
 margin-left: 3px;
 }
+.menu li a {
+	text-decoration: none;
+}
 #region-menu  .menu li a {
-  font-size: 18px;
+font-size: 18px;
 letter-spacing: 2px;
 line-height: 24px;
-text-decoration: none;
 }
-#region-menu  .menu  li:not(.last) a:after{
-padding-right: 7px;
+.menu  li:not(.last) a:after{
+padding-right: 4px;
 }
 #region-menu .menu li:nth-child(7){
 	margin-right: 63.7px;
@@ -78,6 +89,20 @@ letter-spacing: 0.7px;
 #block-block-2 {
 	float: left;
 	font-size: 11px;
+          margin-top: 45px;
+}
+
+#block-block-2 p {
+  padding-top: 9px;
+}
+/*
+ * zone-content-wrapper
+ * */
+#zone-content-wrapper {
+  padding-bottom: 20px;
+}
+.page-בלוג #zone-content-wrapper {
+	 padding-bottom: 0px;
 }
 /*
  * section-content
@@ -86,15 +111,17 @@ letter-spacing: 0.7px;
   min-height: 330px;
 }
 
-#region-content.grid-12 {
+.front #region-content.grid-12 {
   display: block;
   float: none;
   margin: 0 auto !important;
   width: 896px;
 }
-#region-content.grid-10 {
+.front #region-content.grid-10 {
   margin: auto 5px;
-  width: 790px;
+width: 766px;
+position: relative;
+left: -30px;
 }
 /*
  * sidebar first
@@ -103,7 +130,7 @@ aside#region-sidebar-first {
   left: -7px;
 margin-left: 0;
 position: relative;
-top: -11.6px;
+/*top: -11.6px;*/
 width: 139px;
 float: left;
 }
@@ -122,22 +149,26 @@ margin-bottom: 12px;
 margin-right: 12px;
 padding-left: 8px;	
 }
-[class*=block-menus] .views-field-title{
-font-size:12px;
-padding: 0 6px; 	
-}
 [class*=block-menus] .views-field-title {
   line-height: 11px;
-margin-bottom: 10px;
+margin:0 10px 5px;
 position: relative;
 top: -4px;
+font-size:12px;
+padding: 0 0px 5px ; 
+border-bottom: dotted 1px #e7e8ea
+}
+[class*=block-menus] .views-field-title a{
+	text-decoration: none;
 }
 /*
  * fotter
  * */
-}
 #block-block-1 {
   font-size: 12px;
+}
+#block-system-main-menu--2 .menu li a {
+    font-size: 12px;
 }
 /*
  * .view-reshet
@@ -145,6 +176,10 @@ top: -4px;
 .view-reshet {
 	padding:  7px 15px;
 	min-height:330px;
+}
+.grid-10 .view-reshet {
+padding: 7px  8px;
+width:758px;
 }
 .isotope-element{		
 	width: 104px ;
@@ -155,7 +190,7 @@ top: -4px;
 /*
  * blog
  * */
-.page-blog #region-branding {
+.page-בלוג #region-branding {
   background: url("/sites/all/themes/omega3sub/images/header_blog.jpg") no-repeat scroll 0 0 / contain  transparent;
   max-height: 287px;
   height: 287px;
@@ -163,7 +198,7 @@ top: -4px;
   width: 100%;
 }
 
-.page-blog #region-menu.grid-12 {
+.page-בלוג #region-menu.grid-12 {
   border-image: url("/sites/all/themes/omega3sub/images/menu_border.png") 1 0 0 0 fill repeat repeat;
   border-style: solid;
   border-width: 1px 0 0;
@@ -190,44 +225,46 @@ font-size: 13px;
 #block-menu-menu-blog .menu .last.leaf  {
 float: left;
 }
-.page-blog .block-title {
- display: inline;
+.page-בלוג .block-title {
+display: inline-block;
 font-size: 16px;
 font-weight: normal;
-padding-bottom: 6px;
-padding-top: 7px;
+padding-bottom: 15px;
+padding-top: 2px;
 }
-.page-blog .views-summary li a {
-  font-size: 14px;
-}
-.page-blog .item-list ul li {
+
+.page-בלוג .item-list ul li {
   margin: 0;
+font-size: 14px;
+}
+.page-בלוג .item-list ul li:hover, .page-בלוג .item-list ul li .active {
+  color: #fb1f6d;
+
 }
 
  
-.page-blog #block-views-exp-test-page-1 > div,
-.page-blog #block-views-exp-test-page-1 .block-inner, 
-.page-blog #block-views-exp-test-page-1 .block-inner .content,
-.page-blog #block-views-exp-test-page-1 form > div,
-.page-blog #views-exposed-form-test-page-1  ,
-.page-blog .views-exposed-form, 
-.page-blog .views-exposed-widgets, 
-.page-blog #views-exposed-form-test-page-1 #edit-combine-wrapper, 
-.page-blog #views-exposed-form-test-page-1 #edit-combine-wrapper div {
+.page-בלוג #block-views-exp-test-page-1 > div,
+.page-בלוג #block-views-exp-test-page-1 .block-inner, 
+.page-בלוג #block-views-exp-test-page-1 .block-inner .content,
+.page-בלוג #block-views-exp-test-page-1 form > div,
+.page-בלוג #views-exposed-form-test-page-1  ,
+.page-בלוג .views-exposed-form, 
+.page-בלוג .views-exposed-widgets, 
+.page-בלוג #views-exposed-form-test-page-1 #edit-combine-wrapper, 
+.page-בלוג #views-exposed-form-test-page-1 #edit-combine-wrapper div {
   display: inline !important;
 float: none;
 margin: 0;
 padding: 0;
+}
+.page-בלוג .views-field-body {
+	display:none;
 }
 #block-views-exp-test-page-1 .block-inner {
 /*
   position: relative;
   right: -15px;*/
 
-}
-.page-blog h2.node-title a  {
-  font-size: 18px;
-   
 }
 #block-views-exp-test-page-1 {
   margin-top: 16px;
@@ -236,4 +273,67 @@ padding: 0;
  * search filters*/
 #edit-combine {
  width: 50%;     
+}
+/*
+ * contact form 
+ * */
+#node-webform-189 {
+  position: relative;
+  background-color: black;
+}
+#webform-client-form-189 {
+	color: white;
+	font-size: 14px;
+	position: absolute;
+	right: 20px;
+	top: 0;
+}
+#webform-client-form-189 input{
+border: 1px solid #d5fs2fa;
+border-radius: 3px;	
+}
+#webform-client-form-189 .form-item label {
+  display: inline-block;
+margin-right: 0;
+width: 95px !important;
+vertical-align: top;
+}
+.form-textarea-wrapper.resizable.textarea-processed.resizable-textarea {
+  display: inline-block;
+}
+#webform-client-form-189 #webform-component-contact p >span{
+	color: #ffa500;
+}
+#webform-client-form-189 #webform-component-contact #contact-info {
+  font-size: 12px;
+  text-align: left;
+}
+#webform-client-form-189 #webform-component-contact #contact-info a{
+	color:white;
+	text-decoration: none;
+}
+#webform-client-form-189 #webform-component-contact p:first-child {
+  margin-bottom: 0px;
+}
+#webform-client-form-189 #webform-component-new-markup > p:first-child {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#webform-client-form-189 .webform-component input, 
+#webform-client-form-189 .webform-component textarea {
+  width: 310px;
+  background-color: #595959;
+}
+#webform-client-form-189 .grippie{
+	display: none;
+}
+#webform-client-form-189 #edit-actions {
+  float: left;
+}
+#webform-client-form-189 #webform-component-contact {
+  float: right;
+}
+.page-node-189 #page-title {
+  display: none;
 }

@@ -54,6 +54,6 @@ jQuery('body:not(.ie) #zone-header').css('position','relative').append('<div id=
  // jQuery('body.front #overlay_site').css("background","url(/sites/all/modules/overlay_site/main.jpg)");
      
  
- jQuery('body.front #overlay_site').css("background","url(/sites/all/modules/overlay_site/reshet-lobi.png)");
- 
+ // jQuery('body.front #overlay_site').css("background","url(/sites/all/modules/overlay_site/reshet-lobi.png)");
+ jQuery('body.front #overlay_site').css("background","url(/sites/all/modules/overlay_site/inner.jpg)");
 });

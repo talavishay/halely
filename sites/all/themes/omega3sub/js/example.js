@@ -1,80 +1,75 @@
-Drupal.behaviors.halely_omega_subthemeExampleBehavior = {
-  attach: function (context, settings) {
-	  	
-  		/*jQuery.getScript("/misc/jquery.ba-bbq.js");*/
-    	jQuery(".views-fluidgrid-item-inner .field-content >div").each(function(i, val){
-			var cs = jQuery(val).attr("class"); 
-			var tit = cs + " -- " +jQuery("img", val).attr("title"); 
-			jQuery("img", val).attr("title",tit);
-			jQuery(val).bind("mouseover mouseout", function(e){
-				jQuery('#'+cs).toggleClass("active-trail");
-			});
-			jQuery(val).bind("mouseover", function(e){
-				var rand = Math.round( Math.random() * (-5 - 5) + 5);
-				jQuery(val).css("transform","scale(1.1) rotateZ("+rand+"deg)");
-			});
-		});
+jQuery(document).ready(function(){
+	// Drupal.avishay.comment();
 	
-	    jQuery("[nid]").live("click", function(e){
-	    	jQuery(".isotope-element").css("z-index","1");
-	    	var nid = jQuery(e.currentTarget).attr("nid");
-	        jQuery.colorbox({href:"/get_node/"+nid,"width": window.innerWidth * 0.80 ,"height":window.innerHeight * 0.80});
-	    });
-    
+	jQuery("#block-system-main-menu--2 .menu a[href^='\/#']").removeClass("active");
+		
+	if(!jQuery("html").hasClass("no-csstransforms3d")){
+		Drupal.avishay.transform = "transform";
+	}
+	jQuery("[nid]").live("click", function(e){
+			jQuery(".ui-dialog-content").dialog("close").remove();
+			var nid = jQuery(e.currentTarget).attr("nid").trim();
+			open_dialog(nid);
+		});
+	jQuery(window).trigger('hashchange');
+	
+});
+Drupal.behaviors.omega3sub = {
+  attach: function (context, settings) {
+	  	if(jQuery("body").hasClass("page-בלוג")){
+			Drupal.avishay.get_comments();
+	  		Drupal.avishay.blog();  		
+		}
+  		Drupal.avishay.about();  		
 		jQuery(".isotope-element").bind("mouseover", function(e){
 		    that = jQuery(e.currentTarget);
-		    jQuery(".views-field-title,.views-field-type", that).removeClass("fadeout").addClass("fadein");
-		    
-			if(!jQuery("html").hasClass("no-csstransforms3d")){
-				var transform = "transform";
-			} 
-    		
+		    jQuery(".views-field-title,.views-field-type", that).removeClass("fadeout").addClass("fadein");    		
    		    if(typeof(that.attr("trans")) === "undefined" || that.attr("trans") === ""){    	
-   				if (transform !== "transform"){
-    				var t = "matrix(1, 0, 0, 1, "+jQuery(that).css("translate").toString(',')+")";	
+   				if (Drupal.avishay.transform !== "transform"){
+    				var matrix = "matrix(1, 0, 0, 1, "+jQuery(that).css("translate").toString(',')+")";	
     			} else {
-    				var t = jQuery(that).css("transform");    		    		
+    				var matrix = jQuery(that).css("transform");    		    		
     			}
-    			jQuery(that).attr("trans",t);
+    			jQuery(that).attr("trans", matrix);
 		   	} else {
-		   		var t = jQuery(that).attr("trans");
+		   		var matrix = jQuery(that).attr("trans");
 		   	}
+			if (Drupal.avishay.transform === "transform"){	// Firefox
+				jQuery(that).css({transform : matrix.replace(/1,/g, '1.05,') ,"z-index":"9"}).addClass("shadow");
+			}else{	// Chrome
+				jQuery(that).css({"-webkit-transform" : matrix.replace(/1,/g, '1.05,') ,"z-index":"9"}).addClass("shadow");
+			}    	    
    	
-   			if(jQuery(that).attr("data-category") === "שותפים"){
-   				if (transform === "transform"){
-    				jQuery(that).css({transform  : t.replace(/1,/g, '1.5,').replace(/0,/g, Math.random()*(Math.floor(Math.random()*2.01) - 1.00)+',') ,"z-index":"99999"}).addClass("shadow");    
-   				}		else	{
-    				jQuery(that).css({"-webkit-transform"  : t.replace(/1,/g, '1.5,').replace(/0,/g, Math.random()*(Math.floor(Math.random()*2.01) - 1.00)+',') ,"z-index":"99999"}).addClass("shadow");       			
-   				}   		
-   			} else {
-   				if (transform === "transform"){
-    				jQuery(that).css({transform : t.replace(/1,/g, '1.05,') ,"z-index":"99999"}).addClass("shadow");
-    			}else{
-    				jQuery(that).css({"-webkit-transform" : t.replace(/1,/g, '1.05,') ,"z-index":"99999"}).addClass("shadow");
-    			}    	    
-   			}
 		}).bind("mouseout", function(e){
-			jQuery(".views-field-title,.views-field-type", that).addClass("fadeout").removeClass("fadein");
 			that = jQuery(e.currentTarget);	
-			t = that.attr("trans");	
-			jQuery(that).css({transform : t ,"z-index":"1"}).removeClass("shadow");	    
-			jQuery(that).css({"-webkit-transform"  : t, "z-index":"1"}).removeClass("shadow");	    
-			// jQuery(that).css({});
-		    
+			jQuery(".views-field-title,.views-field-type", that).addClass("fadeout").removeClass("fadein");			
+			matrix = that.attr("trans");
+			if (Drupal.avishay.transform === "transform"){	// Firefox
+				jQuery(that).css({transform : matrix, "z-index":"1"}).removeClass("shadow");
+			}else{	// Chrome
+				jQuery(that).css({"-webkit-transform"  : matrix, "z-index":"1"}).removeClass("shadow");
+			}			
+		}).bind("click", function(e){			
+	        	var nid = jQuery(".views-field-nid", e.currentTarget).text().trim();
+	        	var path = jQuery(".views-field-nid >div", e.currentTarget).attr("path").trim();
+	        	if(jQuery(that).attr("data-category") != "אודות"){
+	        		open_dialog(nid);
+	        	}	else	{
+	        		window.location.href = path;
+	        	}
 		});
 	
 	if(window.location.pathname === "/"){	
-		jQuery('.menu a').each(function(i, val){
-			jQuery(val).attr("state", "off");
+		jQuery('.menu a').each(function(i, val){			
 		    jQuery(val).bind("click", function(e){
+		    	// clear transform history on elements
 		        jQuery("#isotope-container [trans]").each(function(i, val){
 		        	jQuery(val).attr("trans", "");
 		        });
-		        var type = jQuery(e.currentTarget).text().trim();
-		        
-		        if(type !== "צור קשר" && type !== "בלוג" ){		        	
+		        var type = jQuery(e.currentTarget).text().trim();		        
+		        if(type !== "צרו קשר" && type !== "בלוג" ){       	
 		        	e.preventDefault(); 
-		        	if(jQuery(e.currentTarget).attr("state") === "off" && type !== "הכל"){        	
+		        	if(type !== "הכל"){        	
 		        		jQuery(".menu a").attr("state", "off").removeClass('active-i');        	        
 		        		jQuery('#isotope-container').isotope({ filter: '.'+type  });
 		        		jQuery(e.currentTarget).attr("state", "on").addClass('active-i');
@@ -92,10 +87,10 @@ Drupal.behaviors.halely_omega_subthemeExampleBehavior = {
 					  	jQuery.bbq.pushState( option );	
 		        		return false;
 	        		}
-	        }
-	    });
+	        	}
+	    	});
 	});
-    jQuery(window).bind( 'hashchange', function( event ){
+    jQuery(window).bind( 'hashchange', function( event ){    	
 		jQuery(".menu a").attr("state", "off").removeClass('active-i');
 		
   		// get options object from hash
@@ -112,14 +107,15 @@ Drupal.behaviors.halely_omega_subthemeExampleBehavior = {
   			jQuery("#region-content").removeClass("grid-12").addClass("grid-10");
   			jQuery("aside").css("display","inline");
   			jQuery("aside .block-views").not("[data-set="+hashOptions["filter"]+"]").hide("slow");
-  			jQuery("aside [data-set="+hashOptions["filter"]+"]").show("fast");
+  			jQuery("aside [data-set="+hashOptions["filter"]+"]").show("fast");  			
   			jQuery("[href*="+hashOptions["filter"]+"]").attr("state", "on").addClass('active-i');
 			jQuery('#isotope-container').isotope( { filter : '.'+hashOptions["filter"]});
+  			Drupal.avishay.reshet_sidebar_height();
   		}
   			
 		console.log("haschagne = "+hashOptions["filter"]);
-	}).trigger('hashchange');
-    
+	});
+    // }).trigger('hashchange');
 	}
 	// Blog
 	jQuery(".view-id-blog.view-display-id-block a").each(function(i, val){
@@ -152,5 +148,151 @@ Drupal.behaviors.halely_omega_subthemeExampleBehavior = {
         };
         this.src = this.getAttribute("delayedSrc");
     });
-
+// var supportsOrientationChange = "onorientationchange" in window,
+		// orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+		// window.addEventListener(orientationEvent, function(e) {
+		        // jQuery("#isotope-container [trans]").each(function(i, val){
+		        	// jQuery(val).attr("trans", "");
+		        // });
+		// }, false);
+		
 }};
+Drupal.avishay.comment = function(){
+	jQuery("[id*=comment]:not(.processed)").each(function(i, val){
+var id = jQuery(val).attr("id");
+var com = jQuery(val).next();
+jQuery(val).wrap('<div id="'+id+'-wrap" class="comment_wrap"></div>');
+jQuery("#"+id+'-wrap').append(com);
+
+
+}).addClass('processed');
+
+jQuery(".child:not(.processed)").each(function(i, val){
+
+var pid =  jQuery(val).attr("class").replace(/(.*)child-(.*) (.*)/, "$2");
+var pid_com = jQuery('#comment-'+pid+'-wrap .comment')
+jQuery(pid_com).append(jQuery(val).parents(".comment_wrap"));
+
+}).addClass('processed');
+
+}
+Drupal.avishay.get_comments = function(){
+ 	jQuery(".views-row article ").each(function(i, val){
+ 		var nid = jQuery(val).attr("nodenid");
+ 		
+ 		jQuery(".comment_count", val).bind("click", function(e){
+ 			jQuery(".comment_count", val).unbind();
+			jQuery(e.currentTarget).append(jQuery('<div id="loading_comment">טוען תגובות</div>'));
+			jQuery.ajax({
+	 			"url" : "get_comments/"+nid, 
+	 			"success" : function(data){
+	 							jQuery("#loading_comment").remove();
+	 							jQuery(".comment_count nav.links", val).before(data);
+	 							jQuery(".comment_count nav.links", val).show();
+	 							jQuery(".comment_count", val).unbind();
+							}	  
+			});	
+		}); 		 	
+	});
+ }
+ Drupal.avishay = {};
+Drupal.avishay.reshet_sidebar_height = function(){
+	var block_menu = jQuery("[class*=block-menus]:visible");
+	var bth = jQuery(".block-title", block_menu).height();
+	var h = jQuery(".view-reshet").height();
+	jQuery(".content", block_menu).css("min-height", h-(bth) );
+}
+function open_popup_node(that, nid){
+	// var dialog= jQuery(".ui-dialog");
+	var dialog= that;
+	jQuery(dialog).load("/get_node/"+nid, function(){				   		
+   		if(jQuery(".field-name-field-gallery .field-items .field-item", dialog).length > 1){
+			jQuery(" .field-name-field-gallery ", dialog).append(jQuery('<div id="nav"></div>'));	   	
+	   		jQuery(" .field-name-field-gallery .field-items", dialog).cycle({
+	   			fx:     'scrollHorz', 						    
+		    	pagerAnchorBuilder: pagerFactory,
+		      	pager:   '#nav', 
+			    timeout: 0, 
+			    rev: true 						    
+		    });
+   		};
+   		var text = jQuery(".node-title", dialog).text();
+   		var wrap_right = jQuery('<div id="wrap_right"></div>').append(jQuery('<div class="title">'+text+'</div>')).append(jQuery(".field-name-body", dialog));
+   		jQuery(".field-name-field-gallery", dialog).after(wrap_right);
+   		jQuery("#wait", dialog).remove();
+   		
+   	});
+}
+function open_dialog(nid) {
+  jQuery('<div></div>').dialog({
+		width: 760,
+		// height: 4	00,
+	 	position: {  
+			my: "center",
+		  	at: "top",
+		  	within: "#isotope-container" 
+	  	},
+	  	resizable: false,
+		modal: true ,
+	  	draggable: false,
+	  	show: "explode",
+		open: function() {
+			jQuery(this).append('<img style="margin: 20px auto;display: block;" id="wait" src="/sites/all/themes/omega3sub/images/busy.gif" />');
+			jQuery('.ui-dialog').prepend(jQuery(".ui-dialog .ui-button"));
+			jQuery(".ui-dialog-titlebar", this).remove();
+ 			open_popup_node(this, nid);
+		 			 
+		},
+	    close: function() {
+	        jQuery(this).dialog('destroy').remove();
+	    }     
+	});
+}
+Drupal.avishay.blog = function(){
+	jQuery(".views-row .teaser").bind("click", function(e){
+		var row = jQuery(e.currentTarget).parents(".views-row");
+		jQuery(".field-name-body", row).show();
+		jQuery(e.currentTarget).hide();
+	});
+}
+Drupal.avishay.about = function(){
+	if(jQuery(".node-type-about").length){
+		var t = jQuery("#block-views-menus-block-6 .block-title").height() ;
+		var h = jQuery("#block-system-main").height();
+		var img = jQuery('<img id="arrow" src="/sites/all/themes/omega3sub/images/studio_arrow.png"/>');
+		var close = jQuery('<div id="close_btn"></div').css({"position": "absolute","left":"10px","top":"10px"}).bind("click", function(){
+			jQuery("#node-about-188 .field-name-body .field-items").hide("slow");					
+			jQuery("#toggle").css("background", "url(/sites/all/themes/omega3sub/images/studio-bird-+.png) no-repeat");
+		});
+		if(jQuery(".page-node-188").length){
+			var toggle = jQuery('<div id="toggle"></div').css({
+				background: 'url("/sites/all/themes/omega3sub/images/studio-bird-~.png") no-repeat scroll center center transparent',
+				position: "absolute",
+			    right: "155px",
+			    top: "27px",
+				width: "29px",
+				height: "29px",
+				"z-index": 1,
+				cursor: "pointer"
+			}).bind("click", function(e){
+					jQuery("#node-about-188 .field-name-body .field-items").show("slow");
+					jQuery("#toggle").css("background", 'url("/sites/all/themes/omega3sub/images/studio-bird-~.png") no-repeat scroll center center transparent');	
+				});
+		jQuery("#node-about-188 .field-name-body").before(toggle)
+		jQuery("#node-about-188 .field-name-body .field-items .field-item").prepend(img).append(close);;
+			
+		}
+		if(jQuery(".page-node-187").length){
+			var img = jQuery('<img id="about_dog" src="/sites/all/themes/omega3sub/images/about_dog.png"/>');
+			jQuery("#block-views-menus-block-6 .content").after(img);
+			jQuery("#block-views-menus-block-6 .content").height(h-(t+13)-63);
+		} else {
+			jQuery("#block-views-menus-block-6 .content").height(h-(t+13));
+		}
+	}
+}
+
+    function pagerFactory(idx, slide) {
+        var s = idx > 2 ? ' style="display:none"' : '';
+        return '<span'+s+'><a href="#">'+(idx+1)+'</a></span>';
+    };

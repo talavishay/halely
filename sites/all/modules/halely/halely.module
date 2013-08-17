@@ -18,12 +18,41 @@ function  halely_menu(){
         'type' => MENU_CALLBACK,
         
     );
+$items["comment_node/%"] = array(
+        'page callback' => 'comment_node',
+        'access callback' => 1,
+        'page arguments' => array(1),	
+        'type' => MENU_CALLBACK,
+        
+    );
+$items["get_comments/%"] = array(
+        'page callback' => 'get_comments',
+        'access callback' => 1,
+        'page arguments' => array(1),	
+        'type' => MENU_CALLBACK,
+        
+    );
      
 	return $items;
 }
 
 function get_node($nid){
 	 
-    print  render(node_view(node_load($nid)));
+	print  render(node_view(node_load($nid), "colorbox"));
   
+}
+function comment_node($nid){
+	$comment = new stdClass;
+	$comment->nid = $nid;
+	$form = drupal_get_form('comment_form', $comment);
+	print render( $form);
+}
+function get_comments($nid){
+	$node =node_load($nid);
+	$cc = comment_get_thread($node, '', 100);
+	$cl = comment_load_multiple($cc);
+	
+	$cm = comment_view_multiple($cl, $node,"full");
+
+     print render($cm);
 }
