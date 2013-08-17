@@ -1,4 +1,7 @@
 <article<?php print $attributes; ?>>
+  <?php
+  /*
+  
   <header>
     <?php print render($title_prefix); ?>
     <?php if ($title): ?>
@@ -12,7 +15,7 @@
       <em class="unpublished"><?php print $unpublished; ?></em>
     <?php endif; ?>
   </header>
-
+*/?>
   <?php print $picture; ?>
 
   <footer class="comment-submitted">

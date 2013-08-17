@@ -1,10 +1,11 @@
+<front>/#filter=שותפים
 /* This file will hold styles for the mobile version of your website (mobile first). */
 /* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
 @import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
 *{
 font-family: "Alef Hebrew",“Helvetica Neue”,Helvetica,Arial,sans-serif !important;
 }
-img {
+.field-name-body img {
   max-width: 100%;
   height: auto;
 }
@@ -432,8 +433,8 @@ width: 25px;
   content: "";
   }
 
-#block-system-main-menu--2 .menu li a.active {
-  color: #EEAA2A;
+#block-system-main-menu--2 .menu li a.active-i  {
+  color: #EEAA2A !important;
 }
 /*
  * blog
