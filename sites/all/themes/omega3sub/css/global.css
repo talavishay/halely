@@ -396,7 +396,13 @@ color: #4F4D4D;
 [class*=block-menus] .block-title{
 border-bottom: 1.5px dotted #FA9403;	
 }
-
+#block-views-menus-block-7 .block-title {
+  border-bottom: 1.5px dotted #547104;
+  color: #547104 !important;
+}
+#block-views-menus-block-7 .block-inner .content{
+	border-right: 1.5px dotted #547104; 
+}
 /*
  * block-contact
  * */
