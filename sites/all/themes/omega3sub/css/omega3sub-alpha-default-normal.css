@@ -174,19 +174,26 @@ margin:0 10px 5px;
 /*
  * .view-reshet
  * */
+.view-reshet .view-content {
+border-bottom: 0px;
+border-right: 0px;
+}
+.grid-10 .view-reshet .view-content {
+max-width: 762px;
+}
 .view-reshet {
-	padding:  7px 15px;
-	min-height:330px;
+	padding:  7px 13px;
+	/*min-height:330px;*/
 }
 .grid-10 .view-reshet {
 padding: 7px  8px;
-width:758px;
+width:762px;
 }
 .isotope-element{		
-	width: 104px ;
-	height: 104px ;
-	margin:0px;
-	border:2px solid white;
+	/*border: 2px solid transparent;*/
+height: 104px;
+margin: 2px;
+width: 104px;
 }
 /*
  * blog

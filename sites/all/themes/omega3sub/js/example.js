@@ -55,10 +55,20 @@ function open_popup_node(that, nid) {
 				timeout : 0,
 				rev : true
 			});
-		};
-		var text = jQuery(".node-title", dialog).text();
+			var text = jQuery(".node-title", dialog).text();
 		var wrap_right = jQuery('<div id="wrap_right"></div>').append(jQuery('<div class="title">' + text + '</div>')).append(jQuery(".field-name-body", dialog));
 		jQuery(".field-name-field-gallery", dialog).after(wrap_right);
+		} else {
+			jQuery(".ui-dialog .field-name-body").css({
+			  "color"	: "#4F4D4D",
+			  "font-size": "12px",
+			  "height"	: "auto",
+			  "margin"	: "0 auto",
+			  "overflow": "visible",
+			  "width"	: "98%"
+			});
+		};
+		
 		jQuery("#wait", dialog).remove();
 		jQuery(dialog).prepend(jQuery("header",dialog));
 
@@ -264,7 +274,8 @@ Drupal.behaviors.omega3sub = {
 				});
 			});
 			jQuery(window).bind('hashchange', function(event) {
-				jQuery(".menu a").attr("state", "off").removeClass('active-i');
+				jQuery(".menu a").removeClass('active-i');
+			jQuery(".ui-dialog").remove();
 
 				// get options object from hash
 				var hashOptions = jQuery.deparam.fragment();
@@ -277,6 +288,7 @@ Drupal.behaviors.omega3sub = {
 						filter : '*'
 					});
 					jQuery(".menu li:first-child a").attr("state", "on").addClass('active-i');
+					
 				} else {
 					jQuery("#region-content").removeClass("grid-12").addClass("grid-10");
 					jQuery("aside").css("display", "inline");
@@ -288,8 +300,9 @@ Drupal.behaviors.omega3sub = {
 					});
 					Drupal.avishay.reshet_sidebar_height();
 				}
-
-				console.log("haschagne = " + hashOptions["filter"]);
+				// jQuery("html, body").animate({ scrollTop: jQuery('#isotope-container').offset().top }, 1000);
+				jQuery("html, body").animate({ scrollTop: 0 }, 1000);
+				// console.log("haschagne = " + hashOptions["filter"]);
 			});
 			// }).trigger('hashchange');
 		}
