@@ -25,7 +25,7 @@ Drupal.avishay.get_comments = function() {
 			jQuery(".comment_count", val).unbind();
 			jQuery(e.currentTarget).append(jQuery('<div id="loading_comment">טוען תגובות</div>'));
 			jQuery.ajax({
-				"url" : "get_comments/" + nid,
+				"url" : "/get_comments/" + nid,
 				"success" : function(data) {
 					jQuery("#loading_comment").remove();
 					jQuery(".comment_count nav.links", val).before(data);
