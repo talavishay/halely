@@ -150,16 +150,17 @@ margin-right: 12px;
 padding-left: 8px;	
 }
 [class*=block-menus] .views-field-title {
-  line-height: 11px;
-margin:0 10px 5px;
+  line-height: 13px;
 position: relative;
 top: -4px;
 font-size:12px;
+border-bottom: dotted 1px #e7e8ea;
 padding: 0 0px 5px ; 
-border-bottom: dotted 1px #e7e8ea
+margin:0 10px 5px;
 }
 [class*=block-menus] .views-field-title a{
 	text-decoration: none;
+	display:block;
 }
 /*
  * fotter

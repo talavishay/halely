@@ -60,6 +60,7 @@ function open_popup_node(that, nid) {
 		var wrap_right = jQuery('<div id="wrap_right"></div>').append(jQuery('<div class="title">' + text + '</div>')).append(jQuery(".field-name-body", dialog));
 		jQuery(".field-name-field-gallery", dialog).after(wrap_right);
 		jQuery("#wait", dialog).remove();
+		jQuery(dialog).prepend(jQuery("header",dialog));
 
 	});
 }
@@ -143,7 +144,7 @@ Drupal.avishay.about = function() {
 			var toggle = jQuery('<div id="toggle"></div').css({
 				background : 'url("/sites/all/themes/omega3sub/images/studio-bird-~.png") no-repeat scroll center center transparent',
 				position : "absolute",
-				right : "155px",
+				right : "159px",
 				top : "27px",
 				width : "29px",
 				height : "29px",

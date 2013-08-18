@@ -1,41 +1,25 @@
 <?php
-function halely_views_api() {
-  return array(
-    'api' => 3,
-     'path' => drupal_get_path('module', 'halely') . '/views'
-  );
-}
-function halely_views_pre_view($view, $display_id, $args){
-	if($view->name === "project"){
-			
-	}		
-}
 function  halely_menu(){
  $items["get_node/%"] = array(
         'page callback' => 'get_node',
         'access callback' => 1,
         'page arguments' => array(1),
-        'type' => MENU_CALLBACK,
-        
+        'type' => MENU_CALLBACK,        
     );
 $items["comment_node/%"] = array(
         'page callback' => 'comment_node',
         'access callback' => 1,
         'page arguments' => array(1),	
-        'type' => MENU_CALLBACK,
-        
+        'type' => MENU_CALLBACK,        
     );
 $items["get_comments/%"] = array(
         'page callback' => 'get_comments',
         'access callback' => 1,
         'page arguments' => array(1),	
-        'type' => MENU_CALLBACK,
-        
-    );
-     
+        'type' => MENU_CALLBACK,        
+    );    
 	return $items;
 }
-
 function get_node($nid){
 	 
 	print  render(node_view(node_load($nid), "colorbox"));
@@ -50,9 +34,37 @@ function comment_node($nid){
 function get_comments($nid){
 	$node =node_load($nid);
 	$cc = comment_get_thread($node, '', 100);
-	$cl = comment_load_multiple($cc);
-	
+	$cl = comment_load_multiple($cc);	
 	$cm = comment_view_multiple($cl, $node,"full");
-
      print render($cm);
+}
+function halely_menu_alter(&$items) {
+  $items['node_reference/autocomplete/%/%/%']['page callback'] = 'halely_nodereference_autocomplete';
+}
+function halely_nodereference_autocomplete($entity_type, $bundle, $field_name, $string = ''){
+
+  $field = field_info_field($field_name);
+  $instance = field_info_instance($entity_type, $field_name, $bundle);
+
+  $options = array(
+    'string' => $string,
+    'match' => $instance['widget']['settings']['autocomplete_match'],
+    'limit' => 10,
+  );
+  $references = node_reference_potential_references($field, $options);
+
+  $matches = array();
+  foreach ($references as $id => $row) {
+  	$node = node_load($id);
+   $type_obj = node_type_load($node->type);
+  $human_readable_type = $type_obj->name;
+    // Markup is fine in autocompletion results (might happen when rendered
+    // through Views) but we want to remove hyperlinks.
+    $suggestion = preg_replace('/<a href="([^<]*)">([^<]*)<\/a>/', '$2', $row['rendered']);
+	$suggestion = $suggestion;
+    // Add a class wrapper for a few required CSS overrides.
+    $matches[$row['title'] . " [nid:$id]"] = '<div class="reference-autocomplete">' . $suggestion.'<div><strong>'.$human_readable_type. '</strong></div></div>';
+  }
+
+  drupal_json_output($matches);
 }

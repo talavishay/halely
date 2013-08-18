@@ -9,6 +9,9 @@ font-family: "Alef Hebrew",“Helvetica Neue”,Helvetica,Arial,sans-serif !impo
   max-width: 100%;
   height: auto;
 }
+#messages{
+	z-index:99;
+}
 .isotope, .isotope .isotope-item ,
 .masonry, .masonry .masonry-brick {
   transition-duration: 1.5s;
@@ -31,7 +34,7 @@ z-index: 1;
 	background-image: url("/sites/all/themes/omega3sub/images/close_btn.png");
 	width: 27px;
 	height:27px;
-	
+	cursor: pointer;
 }
 .pager  li {
   margin: 0 1px !important;
@@ -254,15 +257,23 @@ z-index: 100;
 }
 .ui-dialog header {
     position: absolute;
-    top: -40px;
+top: -20px;
+margin: 0px;
+padding: 0px;
     
 }
-.ui-dialog header a{
+
+.ui-dialog header a,
+.ui-dialog header h2{
+	margin: 0px;
+	padding: 0px;
 color: #fecb16;
 text-decoration: none;
 font-size: 18px;
 font-weight: bold;
 letter-spacing: 1px;
+vertical-align: top;
+line-height: 0px;
 }
 /*
  * .field-name-field-gallery slideshow controls
@@ -616,12 +627,12 @@ margin: 23px 0 33px;
 	position: relative;
 }
 #node-about-188  .field-name-body  {
-	 background: url("/sites/all/themes/omega3sub/images/studio-bird.png") no-repeat scroll 566px 29px transparent;
-    min-height: 151px;
-    padding: 16px 194px 0 0;
-    position: absolute;
-    top: 0;
-    width: 542px;
+background: url("/sites/all/themes/omega3sub/images/studio-bird.png") no-repeat scroll 570px 29px transparent;
+min-height: 151px;
+padding: 16px 197px 0 0;
+position: absolute;
+top: 0;
+width: 542px;
 }
 #node-about-188 .field-name-body .field-items{
 	background: black;
