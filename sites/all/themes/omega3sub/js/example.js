@@ -71,7 +71,7 @@ function open_popup_node(that, nid) {
 		
 		jQuery("#wait", dialog).remove();
 		jQuery(dialog).prepend(jQuery("header",dialog));
-
+		jQuery("html, body").animate({ scrollTop: jQuery(".ui-dialog").offset().top-30 }, 500);
 	});
 }
 function open_dialog(nid) {
