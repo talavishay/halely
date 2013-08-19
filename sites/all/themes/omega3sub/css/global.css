@@ -373,7 +373,6 @@ margin-bottom: 5px;
 
 }
 .ui-dialog .field-name-body {
-  height: 60px;
 overflow: hidden;
 font-size: 12px;
 color: #4F4D4D;
@@ -433,6 +432,7 @@ border-bottom: 1.5px dotted #FA9403;
 #block-views-menus-block-7 .block-inner .content{
 	border-right: 1.5px dotted #547104; 
 }
+
 /*
  * block-contact
  * */
@@ -601,6 +601,23 @@ margin: 23px 0 33px;
 .comment_amount {
 	cursor: pointer;
 }
+
+.feed-icon.clearfix  {
+  border-top: 1px dotted;
+  margin-top: 31px;
+  padding-top: 20px;
+  }
+  .feed-icon a {
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+}
+#block-block-6 .feed-icon > img {
+  display: inline-block;
+  padding-bottom: 3px;
+  padding-right: 11px;
+}
+
 /*blog
  * search filters*/
 
