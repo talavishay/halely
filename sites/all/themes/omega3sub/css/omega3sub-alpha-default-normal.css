@@ -25,7 +25,7 @@ margin-right: 59px;
   letter-spacing: 0.9px;
   transform: scaleY(1.1);
 }
-.breadcrumb > a {
+#breadcrumb  {
   display: none;
 }
 
