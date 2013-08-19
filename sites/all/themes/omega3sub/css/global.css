@@ -11,6 +11,9 @@ font-family: "Alef Hebrew",“Helvetica Neue”,Helvetica,Arial,sans-serif !impo
 #messages{
 	z-index:99;
 }
+.front #messages .error{
+	display: none;
+}
 .isotope, .isotope .isotope-item ,
 .masonry, .masonry .masonry-brick {
   transition-duration: 1.5s;
@@ -26,7 +29,7 @@ a:hover {
 .logo-img {
   margin-left: 45px;
 position: relative;
-top: 4px;
+top: 5px;
 z-index: 1;
 }
 #close_btn{
@@ -126,7 +129,7 @@ font-weight: bold;
   color: #EEAA2E !important;
   font-size: 14px !important;
   font-weight: bold;
-  vertical-align: bottom;
+  vertical-align: top;
 }
 /*
  * zone-content
@@ -460,9 +463,16 @@ width: 25px;
 /*
  * fotter
  * */
-#zone-footer {
-  border-top: solid 2px #cfdcdc;
-}
+/*
+ * footer
+ * */
+#region-footer-first{
+	border-top: 2px solid #CFDCDC;
+left: 34px;
+padding: 0 55px;
+position: relative;
+width: 925px;
+}	
 #block-block-1 {
   color: #EEAA2E;
 }
@@ -635,7 +645,10 @@ margin: 23px 0 33px;
 }
 
 /*about/studio */
-
+.field-name-field-background img,
+.field-name-field-background {
+  width: 100%;
+}
 .page-node-187 #page-title,
 .page-node-188 #page-title
 {

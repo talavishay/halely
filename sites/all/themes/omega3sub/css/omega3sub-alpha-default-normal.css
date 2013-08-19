@@ -28,6 +28,7 @@ margin-right: 59px;
 .breadcrumb > a {
   display: none;
 }
+
 /*
  * Main menu
  * */
@@ -53,7 +54,7 @@ margin-right: 59px;
 	float: left;
 }
 #region-menu .menu {
-  padding: 0 93px 0 0;
+  padding: 0 93px 0 93px;
 }
 .menu li{
 	display: inline;

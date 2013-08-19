@@ -40,7 +40,7 @@ Drupal.avishay.reshet_sidebar_height = function() {
 	var block_menu = jQuery("[class*=block-menus]:visible");
 	var bth = jQuery(".block-title", block_menu).height();
 	var h = jQuery(".view-reshet").height();
-	jQuery(".content", block_menu).css("min-height", h - (bth));
+	jQuery(".content", block_menu).css("min-height", h - (bth)+7);
 }
 function open_popup_node(that, nid) {
 	// var dialog= jQuery(".ui-dialog");
@@ -296,9 +296,20 @@ Drupal.behaviors.omega3sub = {
 					jQuery("aside [data-set=" + hashOptions["filter"] + "]").show("fast");
 					jQuery("[href*=" + hashOptions["filter"] + "]").attr("state", "on").addClass('active-i');
 					jQuery('#isotope-container').isotope({
-						filter : '.' + hashOptions["filter"]
-					});
-					Drupal.avishay.reshet_sidebar_height();
+						"filter" 	: '.' + hashOptions["filter"],
+						"onLayout"	: Drupal.avishay.reshet_sidebar_height(),
+						"complete"	: Drupal.avishay.reshet_sidebar_height(),
+					}, (function(){
+						try{
+							if(jQuery('.isotope').length >= 1){
+								var transition_duration = jQuery('.isotope').first().css("transition-duration").replace(/s/i, "")*1000;
+								setTimeout(function(){
+									Drupal.avishay.reshet_sidebar_height();
+								}, transition_duration);
+							}
+						} catch(e){		}
+						})()
+					);					
 				}
 				// jQuery("html, body").animate({ scrollTop: jQuery('#isotope-container').offset().top }, 1000);
 				jQuery("html, body").animate({ scrollTop: 0 }, 1000);
@@ -306,13 +317,12 @@ Drupal.behaviors.omega3sub = {
 			});
 			// }).trigger('hashchange');
 		}
-		
-
 		jQuery(".delayImg").each(function() {
 			this.onload = function() {
 				jQuery(this).animate({
 					opacity : 1
-				}, 1000);
+				// }, 1000);
+				}, Math.round(Math.random()*20)*400);
 			};
 			this.src = this.getAttribute("delayedSrc");
 		});
