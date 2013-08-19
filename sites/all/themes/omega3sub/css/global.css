@@ -140,6 +140,15 @@ font-weight: bold;
 /*
  * Isotope
  * */
+/*.isotope-element.nid-141 ,
+.isotope-element.nid-142 ,
+.isotope-element.nid-143 ,*/
+.grid-12 .isotope-element.nid-187 ,
+.grid-12 .isotope-element.nid-144 ,
+.grid-12 .isotope-element.nid-157 {
+width: 212px;
+height: 212px;
+}
 .hover_action{
 	position: relative;
 }
@@ -216,7 +225,7 @@ line-height: 15px;
 padding: 0 5px;
 position: absolute;
 text-align: left;
-width: 90%;
+width: 97%;
 opacity:0;
 }
 .isotope-element .views-field-title.fadein,
