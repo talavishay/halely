@@ -322,7 +322,7 @@ Drupal.behaviors.omega3sub = {
 				jQuery(this).animate({
 					opacity : 1
 				// }, 1000);
-				}, Math.round(Math.random()*20)*400);
+				}, Math.round(Math.random()*10)*400);
 			};
 			this.src = this.getAttribute("delayedSrc");
 		});
