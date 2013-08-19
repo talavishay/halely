@@ -538,8 +538,10 @@ width: 160px;
 font-size: 14px;
 text-decoration: none;
 }
-.page-בלוג .views-summary li a:hover
-,page-בלוג .views-summary li a.active {
+.page-בלוג .item-list ul li:hover,
+.page-בלוג .item-list ul li a:hover,
+ .page-בלוג .item-list ul li.active a,
+ .page-בלוג .item-list ul li.active {
   color: #fb1f6d;
 }
 #block-views-erchives-block, 

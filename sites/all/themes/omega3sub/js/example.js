@@ -64,7 +64,7 @@ function open_popup_node(that, nid) {
 	// var dialog= jQuery(".ui-dialog");
 	var dialog = that;
 	jQuery(dialog).load("/get_node/" + nid, function() {
-		if (jQuery(".field-name-field-gallery .field-items .field-item", dialog).length > 1) {
+		if (jQuery(".field-name-field-gallery .field-items .field-item", dialog).length >= 1) {
 			jQuery(" .field-name-field-gallery ", dialog).append(jQuery('<div id="nav"></div>'));
 			jQuery(" .field-name-field-gallery .field-items", dialog).cycle({
 				fx : 'scrollHorz',
@@ -128,8 +128,8 @@ Drupal.avishay.blog = function() {
 		jQuery(".view-id-blog.view-display-id-block a").each(function(i, val) {
 			jQuery(val).bind("click", function(e) {
 				e.preventDefault();
-				jQuery("#block-views-erchives-block a, #block-views-blog-block a").removeClass("active");
-				jQuery(e.currentTarget).addClass("active");
+				jQuery("#block-views-erchives-block li, #block-views-blog-block li").removeClass("active");
+				jQuery(e.currentTarget).parent("li").addClass("active");
 				var tid = jQuery(val).attr("href").replace(/\/term\//i, "");
 				jQuery("#block-views-exp-test-page-1 #edit-created-min").val("");
 				jQuery("#block-views-exp-test-page-1 #edit-created-max").val("");
@@ -142,8 +142,8 @@ Drupal.avishay.blog = function() {
 		jQuery("#block-views-erchives-block a").each(function(i, val) {
 			jQuery(val).bind("click", function(e) {
 				e.preventDefault();
-				jQuery("#block-views-erchives-block a, #block-views-blog-block a").removeClass("active");
-				jQuery(e.currentTarget).addClass("active");
+				jQuery("#block-views-erchives-block li, #block-views-blog-block li").removeClass("active");
+				jQuery(e.currentTarget).parent("li").addClass("active");
 				var href = jQuery(val).attr("href").replace(/\/posts-by-date\//i, "");
 				var min_date = href.substr(0, 4) + "-" + href.substr(4, 6);
 				var max_date = min_date + "-31";
@@ -294,7 +294,7 @@ Drupal.behaviors.omega3sub = {
 			jQuery(window).bind('hashchange', function(event) {
 				jQuery(".menu a").removeClass('active-i');
 				jQuery(".ui-dialog").remove();
-				Drupal.avishay.dealyImg();
+				
 				// get options object from hash
 				var hashOptions = jQuery.deparam.fragment();
 
@@ -304,7 +304,18 @@ Drupal.behaviors.omega3sub = {
 					jQuery("#region-content").removeClass("grid-10").addClass("grid-12");
 					jQuery('#isotope-container').isotope({
 						filter : '*'
-					}, Drupal.avishay.dealyImg());
+					}, (function(){
+						try{
+							if(jQuery('.isotope-element').length >= 1){
+									Drupal.avishay.dealyImg();
+						
+								var transition_duration = jQuery('.isotope').first().css("transition-duration").replace(/s/i, "")*1000;
+								setTimeout(function(){
+						
+								}, transition_duration);
+							}
+						} catch(e){		}
+						})());
 					jQuery(".menu li:first-child a").attr("state", "on").addClass('active-i');
 					
 				} else {
@@ -319,12 +330,12 @@ Drupal.behaviors.omega3sub = {
 						"complete"	: Drupal.avishay.reshet_sidebar_height(),
 					}, (function(){
 						try{
-							if(jQuery('.isotope').length >= 1){
-								Drupal.avishay.dealyImg();
-								var transition_duration = jQuery('.isotope').first().css("transition-duration").replace(/s/i, "")*1000;
-								setTimeout(function(){
+							if(jQuery('.isotope-element').length >= 1){
+									Drupal.avishay.dealyImg();
+						
+								var transition_duration = jQuery('.isotope-element').first().css("transition-duration").replace(/s/i, "")*1000;
+								window.setTimeout(function(){
 									Drupal.avishay.reshet_sidebar_height();
-									
 								}, transition_duration);
 							}
 						} catch(e){		}
