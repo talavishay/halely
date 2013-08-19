@@ -1,4 +1,22 @@
 Drupal.avishay = {};
+Drupal.avishay.dealyImg = function(){
+	
+	var elem = jQuery(".isotope-element ").filter(function() {
+    	return jQuery(this).css("opacity") !== '0';
+	});
+	jQuery(".delayImg", elem ).each(function() {
+			if(this.src === ""){
+				this.onload = function() {
+					jQuery(this).animate({
+						opacity : 1
+					// }, 1000);
+					}, Math.round(Math.random()*10)*400);
+				};
+				this.src = this.getAttribute("delayedSrc");
+			}
+		});
+}
+
 Drupal.avishay.comment = function() {
 	jQuery("[id*=comment]:not(.processed)").each(function(i, val) {
 		var id = jQuery(val).attr("id");
@@ -275,8 +293,8 @@ Drupal.behaviors.omega3sub = {
 			});
 			jQuery(window).bind('hashchange', function(event) {
 				jQuery(".menu a").removeClass('active-i');
-			jQuery(".ui-dialog").remove();
-
+				jQuery(".ui-dialog").remove();
+				Drupal.avishay.dealyImg();
 				// get options object from hash
 				var hashOptions = jQuery.deparam.fragment();
 
@@ -286,7 +304,7 @@ Drupal.behaviors.omega3sub = {
 					jQuery("#region-content").removeClass("grid-10").addClass("grid-12");
 					jQuery('#isotope-container').isotope({
 						filter : '*'
-					});
+					}, Drupal.avishay.dealyImg());
 					jQuery(".menu li:first-child a").attr("state", "on").addClass('active-i');
 					
 				} else {
@@ -302,9 +320,11 @@ Drupal.behaviors.omega3sub = {
 					}, (function(){
 						try{
 							if(jQuery('.isotope').length >= 1){
+								Drupal.avishay.dealyImg();
 								var transition_duration = jQuery('.isotope').first().css("transition-duration").replace(/s/i, "")*1000;
 								setTimeout(function(){
 									Drupal.avishay.reshet_sidebar_height();
+									
 								}, transition_duration);
 							}
 						} catch(e){		}
@@ -317,15 +337,7 @@ Drupal.behaviors.omega3sub = {
 			});
 			// }).trigger('hashchange');
 		}
-		jQuery(".delayImg").each(function() {
-			this.onload = function() {
-				jQuery(this).animate({
-					opacity : 1
-				// }, 1000);
-				}, Math.round(Math.random()*10)*400);
-			};
-			this.src = this.getAttribute("delayedSrc");
-		});
+		
 		// var supportsOrientationChange = "onorientationchange" in window,
 		// orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
 		// window.addEventListener(orientationEvent, function(e) {
