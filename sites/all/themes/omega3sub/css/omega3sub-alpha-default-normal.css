@@ -285,7 +285,15 @@ padding: 0;
 
 }
 #block-views-exp-test-page-1 {
-  margin-top: 16px;
+     margin-top: 16px;
+    position: relative;
+    width: 100%;
+}
+form#views-exposed-form-test-page-1 {
+  left: 0px;
+  position: absolute;
+  top: 5px;
+  width: 124px;
 }
 /*blog
  * search filters*/
