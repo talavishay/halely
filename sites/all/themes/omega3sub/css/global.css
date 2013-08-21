@@ -77,11 +77,9 @@ z-index: 1;
 footer#section-footer {
   background: none repeat scroll 0 0 white;
   bottom: 0;
-  position: fixed;
-  width: 100%;
+    width: 100%;
   padding-bottom: 5px;
-  z-index: 2;
-}
+ }
 footer#section-footer p:last-child{
 	margin-bottom: 0px;
 }
@@ -422,7 +420,8 @@ color: #4F4D4D;
  * sidebar first block-menus
  * */
 [class*=block-menus] .block-inner .content{
-	border-right: 1.5px dotted #FA9403; 
+	border-right: 1.5px dotted #FA9403;
+margin-bottom: 20px;
 }
 [class*=block-menus] .views-field-title a, 
 [class*=block-menus] .views-field-title{
@@ -703,15 +702,18 @@ margin: 23px 0 33px;
  * about
  * */
 /*		studio		*/
-#node-about-188 {
+.node-about {
 	position: relative;
+}
+.node-about .field-name-body {
+    position: absolute;
+top: 0;
 }
 #node-about-188  .field-name-body  {
 background: url("/sites/all/themes/omega3sub/images/studio-bird.png") no-repeat scroll 570px 29px transparent;
 min-height: 151px;
 padding: 16px 197px 0 0;
-position: absolute;
-top: 0;
+
 width: 542px;
 }
 #node-about-188 .field-name-body .field-items{
@@ -765,4 +767,31 @@ margin-bottom: 10px;
 .page-node-188 .field-item a {
   color: white;
 text-decoration: none;
+}
+/*
+*node 187
+*/
+#node-about-187 table {
+ font-size: 12px;
+letter-spacing: 1.5px;
+position: absolute;
+right: 26px;
+top: 26px;
+width: 596px;
+line-height: 5px;
+}
+#node-about-187 table tr:nth-child(n+2) td:first-child {
+  width: 46%;
+}
+#node-about-187  table tr:first-child {
+  height: 23px;
+}
+#node-about-187  table  tr:nth-child(2) {
+  height: 170px;
+}
+#node-about-187  tr:nth-child(3) {
+  height: 182px;
+}
+#node-about-187 tr:nth-child(4) td {
+  padding-left: 124px;
 }
