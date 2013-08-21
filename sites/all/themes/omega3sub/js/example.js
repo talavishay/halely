@@ -253,8 +253,8 @@ Drupal.behaviors.omega3sub = {
 				}
 			}
 		}).bind("click", function(e) {
-			var nid = jQuery(".views-field-nid", e.currentTarget).text().trim();
-			var path = jQuery(".views-field-nid >div", e.currentTarget).attr("path").trim();
+			var nid = jQuery(".views-field-nid", e.currentTarget).text();
+			var path = jQuery(".views-field-nid >div", e.currentTarget).attr("path");
 			if (jQuery(that).attr("data-category") != "אודות") {
 				open_dialog(nid);
 			} else {
