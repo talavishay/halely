@@ -1,4 +1,6 @@
 Drupal.avishay = {};
+Drupal.avishay.isMSIE = /*@cc_on!@*/0;
+
 Drupal.avishay.dealyImg = function(){
 	
 	var elem = jQuery(".isotope-element ").filter(function() {
@@ -210,46 +212,49 @@ Drupal.behaviors.omega3sub = {
 		jQuery(".isotope-element").bind("mouseover", function(e) {
 			that = jQuery(e.currentTarget);
 			jQuery(".views-field-title,.views-field-type", that).removeClass("fadeout").addClass("fadein");
-			if ( typeof (that.attr("trans")) === "undefined" || that.attr("trans") === "") {
-				if (Drupal.avishay.transform !== "transform") {
-					var matrix = "matrix(1, 0, 0, 1, " + jQuery(that).css("translate").toString(',') + ")";
+			if(!Drupal.avishay.isMSIE){
+				if ( typeof (that.attr("trans")) === "undefined" || that.attr("trans") === "") {
+					if (Drupal.avishay.transform !== "transform") {
+						var matrix = "matrix(1, 0, 0, 1, " + jQuery(that).css("translate").toString(',') + ")";
+					} else {
+						var matrix = jQuery(that).css("transform");
+					}
+					jQuery(that).attr("trans", matrix);
 				} else {
-					var matrix = jQuery(that).css("transform");
+					var matrix = jQuery(that).attr("trans");
 				}
-				jQuery(that).attr("trans", matrix);
-			} else {
-				var matrix = jQuery(that).attr("trans");
+				if (Drupal.avishay.transform === "transform") {// Firefox
+					jQuery(that).css({
+						transform : matrix.replace(/1,/g, '1.05,'),
+						"z-index" : "9"
+					}).addClass("shadow");
+				} else {// Chrome
+					jQuery(that).css({
+						"-webkit-transform" : matrix.replace(/1,/g, '1.05,'),
+						"z-index" : "9"
+					}).addClass("shadow");
+				}
 			}
-			if (Drupal.avishay.transform === "transform") {// Firefox
-				jQuery(that).css({
-					transform : matrix.replace(/1,/g, '1.05,'),
-					"z-index" : "9"
-				}).addClass("shadow");
-			} else {// Chrome
-				jQuery(that).css({
-					"-webkit-transform" : matrix.replace(/1,/g, '1.05,'),
-					"z-index" : "9"
-				}).addClass("shadow");
-			}
-
 		}).bind("mouseout", function(e) {
 			that = jQuery(e.currentTarget);
 			jQuery(".views-field-title,.views-field-type", that).addClass("fadeout").removeClass("fadein");
-			matrix = that.attr("trans");
-			if (Drupal.avishay.transform === "transform") {// Firefox
-				jQuery(that).css({
-					transform : matrix,
-					"z-index" : "1"
-				}).removeClass("shadow");
-			} else {// Chrome
-				jQuery(that).css({
-					"-webkit-transform" : matrix,
-					"z-index" : "1"
-				}).removeClass("shadow");
+			if(!Drupal.avishay.isMSIE){
+				matrix = that.attr("trans");
+				if (Drupal.avishay.transform === "transform") {// Firefox
+					jQuery(that).css({
+						transform : matrix,
+						"z-index" : "1"
+					}).removeClass("shadow");
+				} else {// Chrome
+					jQuery(that).css({
+						"-webkit-transform" : matrix,
+						"z-index" : "1"
+					}).removeClass("shadow");
+				}
 			}
 		}).bind("click", function(e) {
-			var nid = jQuery(".views-field-nid", e.currentTarget).text().trim();
-			var path = jQuery(".views-field-nid >div", e.currentTarget).attr("path").trim();
+			var nid = jQuery(".views-field-nid", e.currentTarget).text();
+			var path = jQuery(".views-field-nid >div", e.currentTarget).attr("path");
 			if (jQuery(that).attr("data-category") != "אודות") {
 				open_dialog(nid);
 			} else {
@@ -370,7 +375,7 @@ jQuery(document).ready(function() {
 	}
 	jQuery("[nid]").live("click", function(e) {
 		jQuery(".ui-dialog-content").dialog("close").remove();
-		var nid = jQuery(e.currentTarget).attr("nid").trim();
+		var nid = jQuery(e.currentTarget).attr("nid");
 		open_dialog(nid);
 	});
 	jQuery(window).trigger('hashchange');
