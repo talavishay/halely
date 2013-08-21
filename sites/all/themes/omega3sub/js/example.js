@@ -375,7 +375,7 @@ jQuery(document).ready(function() {
 	}
 	jQuery("[nid]").live("click", function(e) {
 		jQuery(".ui-dialog-content").dialog("close").remove();
-		var nid = jQuery(e.currentTarget).attr("nid").trim();
+		var nid = jQuery(e.currentTarget).attr("nid");
 		open_dialog(nid);
 	});
 	jQuery(window).trigger('hashchange');
