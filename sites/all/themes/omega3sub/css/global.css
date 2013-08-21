@@ -29,7 +29,7 @@ a:hover {
 .logo-img {
   margin-left: 45px;
 position: relative;
-top: 5px;
+top: 9px;
 z-index: 1;
 }
 #close_btn{
@@ -88,6 +88,9 @@ footer#section-footer p:last-child{
 /*
  * Header
  */
+#zone-header{
+	width: 100%;
+}
 img#logo {
   transform: scaleY(0.9);
 }
@@ -475,8 +478,12 @@ width: 25px;
 /*
  * footer
  * */
-#region-footer-first{
+#zone-footer-wrapper{
 	border-top: 2px solid #CFDCDC;
+}
+	
+#region-footer-first{
+	
 left: 34px;
 padding: 0 55px;
 position: relative;
