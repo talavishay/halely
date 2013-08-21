@@ -24,6 +24,7 @@
 ?>
 <?php
 $data = $row->{$field->field_alias};
+$out = preg_replace('/img src/i', 'img class="delayImg" delayedSrc', $output); 
+print preg_replace('/title="(.*)"/i', '', $output);
 
-print preg_replace('/img src/i', 'img class="delayImg" delayedSrc', $output); 
 ?>
