@@ -208,7 +208,7 @@ width: 104px;
  * blog
  * */
 .page-בלוג #region-branding {
-  background: url("/sites/all/themes/omega3sub/images/header_blog.jpg") no-repeat scroll 0 0 / contain  transparent;
+  background: url("/sites/all/themes/omega3sub/images/header_blog.jpg") no-repeat scroll center center / contain  transparent;
   max-height: 287px;
   height: 287px;
   margin: 0;
@@ -216,7 +216,7 @@ width: 104px;
 }
 
 .page-בלוג #region-menu.grid-12 {
-  border-image: url("/sites/all/themes/omega3sub/images/menu_border.png") 1 0 0 0 fill repeat repeat;
+  
   border-style: solid;
   border-width: 1px 0 0;
   height: 30px;
@@ -229,7 +229,7 @@ width: 104px;
   
 }
 #block-menu-menu-blog .menu {
-  padding: 0 13px 0 0;
+  padding: 0 24px 0 20px;
 }
 #block-menu-menu-blog .menu li a {
   margin-left: 6px;
