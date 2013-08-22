@@ -375,7 +375,9 @@ z-index: 100;
 .field-name-field-gallery #nav .sep:last-child {
     display: none;
 }
-
+#nav span {
+	display: inline !important;
+}
 .field-name-field-gallery #nav a{	
 	color: #4f4d4d;
 	font-size: 12px;
