@@ -66,14 +66,25 @@ function open_popup_node(that, nid) {
 	// var dialog= jQuery(".ui-dialog");
 	var dialog = that;
 	jQuery(dialog).load("/get_node/" + nid, function() {
-		if (jQuery(".field-name-field-gallery .field-items .field-item", dialog).length >= 1) {
-			jQuery(" .field-name-field-gallery ", dialog).append(jQuery('<div id="nav"></div>'));
+		var images = jQuery(".field-name-field-gallery .field-items .field-item", dialog).length;
+		if (images > 1) {
+			jQuery(" .field-name-field-gallery ", dialog).append(jQuery('<div id="nav"></div>')).prepend(jQuery('<div id="controls"><div id="first">first</div><div id="next">next</div><div id="last">last</div><div id="prev">prev</div></div>'));
 			jQuery(" .field-name-field-gallery .field-items", dialog).cycle({
 				fx : 'scrollHorz',
 				pagerAnchorBuilder : pagerFactory,
+				prev: '#next',
+				next: '#prev', 
 				pager : '#nav',
 				timeout : 0,
-				rev : true
+				// rev : true,
+				 nowrap: 1 
+			});
+			jQuery("#first", dialog).bind("click", function(){
+				jQuery(".field-name-field-gallery .field-items ", dialog).cycle(0);
+			});
+			jQuery("#last", dialog).bind("click", function(){
+				jQuery(".field-name-field-gallery .field-items ", dialog).cycle(images-1);
+				// jQuery("#nav span:nth-child("+(images-1)+")").addClass("activeSlide");
 			});
 			var text = jQuery(".node-title", dialog).text();
 		var wrap_right = jQuery('<div id="wrap_right"></div>').append(jQuery('<div class="title">' + text + '</div>')).append(jQuery(".field-name-body", dialog));
@@ -254,6 +265,7 @@ Drupal.behaviors.omega3sub = {
 			}
 		}).bind("click", function(e) {
 			var nid = jQuery(".views-field-nid", e.currentTarget).text();
+			nid = nid.trim();
 			var path = jQuery(".views-field-nid >div", e.currentTarget).attr("path");
 			if (jQuery(that).attr("data-category") != "אודות") {
 				open_dialog(nid);

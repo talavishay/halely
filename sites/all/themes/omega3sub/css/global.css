@@ -268,6 +268,54 @@ display: none;
 /*
  * isotope popup
  * */
+div#controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  z-index: 10;
+}
+div#controls #last ,
+div#controls #prev {
+	  float: right;
+ }
+div#controls #next {
+  background: url("/sites/all/themes/omega3sub/images/arrow_left.png") repeat scroll right 0 transparent;
+  float: right;
+  height: 33px;
+  text-indent: -999px;
+  width: 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+div#controls #prev {
+  background: url("/sites/all/themes/omega3sub/images/arrow_right.png") repeat scroll left 0 transparent;
+
+  height: 33px;
+  text-indent: -999px;
+  width: 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+div#controls #first ,
+div#controls #next {
+  float: left;
+}
+div#controls #first {
+  background: url("/sites/all/themes/omega3sub/images/arrow_left.png") repeat scroll left 0 transparent;
+  height: 33px;
+  text-indent: -999px;
+  width: 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+div#controls #last {
+  background: url("/sites/all/themes/omega3sub/images/arrow_right.png") repeat scroll right 0 transparent;
+  height: 33px;
+  text-indent: -999px;
+  width: 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
 .ui-dialog li {
   list-style: square inside none;
 }
