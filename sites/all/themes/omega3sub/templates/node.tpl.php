@@ -17,14 +17,14 @@
       hide($content['comments']);
       hide($content['links']);	          
       print render($content);
-	  if($view_mode === "colorbox"){
+	  // if($view_mode === "colorbox"){
 	  	if(isset($field_project[0])){
 	  		if(isset($field_project[0]["tid"])){
 		  		print views_embed_view('project','block_1', $field_project[0]["tid"]);
 			}
 	  	}
 	  		
-	  }
+	  // }
     ?>
   </div>
   
