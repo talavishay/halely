@@ -62,6 +62,12 @@ Drupal.avishay.reshet_sidebar_height = function() {
 	var h = jQuery(".view-reshet").height();
 	jQuery(".content", block_menu).css("min-height", h - (bth)+7);
 }
+    function onAfter(curr, next, opts, fwd) {
+     var ht = jQuery(this).height();
+
+     //set the container's height to that of the current slide
+     jQuery(this).parent().animate({height: ht});
+    }
 function open_popup_node(that, nid) {
 	// var dialog= jQuery(".ui-dialog");
 	var dialog = that;
@@ -77,7 +83,8 @@ function open_popup_node(that, nid) {
 				pager : '#nav',
 				timeout : 0,
 				// rev : true,
-				 nowrap: 1 
+				 nowrap: 1,
+				   before: onAfter 
 			});
 			jQuery("#first", dialog).bind("click", function(){
 				jQuery(".field-name-field-gallery .field-items ", dialog).cycle(0);
