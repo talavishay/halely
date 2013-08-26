@@ -190,6 +190,11 @@ min-height: 320px;
 	background-color: #E5E9EC;
 margin-top: 5px;
 }
+.draggable img {
+  height: auto;
+  width: 50px;
+  margin: 3px 44px;
+}
 
 .isotope-element img {
   /*margin: 0 auto;*/
