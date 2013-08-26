@@ -93,9 +93,7 @@ function open_popup_node(that, nid) {
 				jQuery(".field-name-field-gallery .field-items ", dialog).cycle(images-1);
 				// jQuery("#nav span:nth-child("+(images-1)+")").addClass("activeSlide");
 			});
-			var text = jQuery(".node-title", dialog).text();
-		var wrap_right = jQuery('<div id="wrap_right"></div>').append(jQuery('<div class="title">' + text + '</div>')).append(jQuery(".field-name-body", dialog));
-		jQuery(".field-name-field-gallery", dialog).after(wrap_right);
+			
 		} else {
 			jQuery(".ui-dialog .field-name-body").css({
 			  "color"	: "#4F4D4D",
@@ -106,7 +104,10 @@ function open_popup_node(that, nid) {
 			  "width"	: "98%"
 			});
 		};
-		
+		var text = jQuery(".node-title", dialog).text();
+		var wrap_right = jQuery('<div id="wrap_right"></div>').append(jQuery('<div class="title">' + text + '</div>')).append(jQuery(".field-name-body", dialog));
+		jQuery(".field-name-field-gallery", dialog).after(wrap_right);
+
 		jQuery("#wait", dialog).remove();
 		jQuery(dialog).prepend(jQuery("header",dialog));
 		jQuery("html, body").animate({ scrollTop: jQuery(".ui-dialog").offset().top-30 }, 500);
