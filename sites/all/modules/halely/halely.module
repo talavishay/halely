@@ -22,7 +22,7 @@ $items["get_comments/%"] = array(
 }
 function get_node($nid){
 	 
-	print  render(node_view(node_load($nid), "colorbox"));
+	print  render(node_view(node_load($nid)));
   
 }
 function comment_node($nid){

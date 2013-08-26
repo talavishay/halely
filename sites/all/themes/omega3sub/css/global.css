@@ -395,7 +395,7 @@ color: #4f4d4d;
 	background-color: #fdcb04;	
 }	
 .ui-dialog{
-	z-index: 999999;
+	z-index: 990;
 }
 .ui-dialog  .view-id-project ,
 .ui-dialog .field-name-field-link, 
