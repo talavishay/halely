@@ -29,7 +29,7 @@
 				phpQuery::selectDocument($doc);			 		
 				foreach(pq("[nid]") as $li) {					 
 					 if(pq($li)->text() === $human_readable_type){
-						pq($li)->remove();
+						pq($li)->parents(".views-row")->remove();
 					 }
 				}
 				if(count(pq("[nid]")) != 0){
