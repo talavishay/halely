@@ -107,7 +107,18 @@ function open_popup_node(that, nid) {
 		var text = jQuery(".node-title", dialog).text();
 		var wrap_right = jQuery('<div id="wrap_right"></div>').append(jQuery('<div class="title">' + text + '</div>')).append(jQuery(".field-name-body", dialog));
 		jQuery(".field-name-field-gallery", dialog).after(wrap_right);
-
+		
+		// "more in projects" remove current node 
+		// var nt = jQuery('article', dialog).attr("node-type");
+		// jQuery('.view-project [nid]', dialog).each(function(i, val){
+			// if(jQuery(val).text() === nt){
+    			// jQuery(val).remove();
+			// }
+		// });
+		// if(jQuery('.view-project [nid]', dialog).length === 0){
+			// jQuery('.view-project', dialog).remove();
+		// }
+		
 		jQuery("#wait", dialog).remove();
 		jQuery(dialog).prepend(jQuery("header",dialog));
 		jQuery("html, body").animate({ scrollTop: jQuery(".ui-dialog").offset().top-30 }, 500);

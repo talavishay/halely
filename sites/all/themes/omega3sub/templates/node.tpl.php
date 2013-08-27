@@ -1,4 +1,9 @@
-<article<?php print $attributes; ?>>
+<?php 
+ $type_obj = node_type_load($node->type);
+  $human_readable_type = $type_obj->name;
+?>
+
+<article<?php print $attributes; ?> node-type="<?php print $human_readable_type ?>">
   <?php print $user_picture; ?>
   <?php print render($title_prefix); ?>
   <?php if (!$page && $title): ?>
@@ -16,15 +21,22 @@
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);	          
-      print render($content);
-	  // if($view_mode === "colorbox"){
-	  	if(isset($field_project[0])){
+      print render($content);  
+		if(isset($field_project[0])){
 	  		if(isset($field_project[0]["tid"])){
-		  		print views_embed_view('project','block_1', $field_project[0]["tid"]);
+	  			require('phpQuery.php');
+		  		$doc = phpQuery::newDocumentHTML( views_embed_view('project','block_1', $field_project[0]["tid"]));
+				phpQuery::selectDocument($doc);			 		
+				foreach(pq("[nid]") as $li) {					 
+					 if(pq($li)->text() === $human_readable_type){
+						pq($li)->remove();
+					 }
+				}
+				if(count(pq("[nid]")) != 0){
+			  		print $doc->htmlOuter();
+				}				 
 			}
 	  	}
-	  		
-	  // }
     ?>
   </div>
   
