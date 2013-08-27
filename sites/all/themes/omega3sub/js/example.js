@@ -120,11 +120,18 @@ function open_popup_node(that, nid) {
 		// }
 		
 		jQuery("#wait", dialog).remove();
+		jQuery('[href^=\\/node]', dialog).bind("click",function(e){
+		    e.preventDefault();
+		    var nid = e.currentTarget.href.replace(/(.*)\/node\/(d*)/i, "$2");
+			open_dialog(nid);
+		    return false;
+		});
 		jQuery(dialog).prepend(jQuery("header",dialog));
 		jQuery("html, body").animate({ scrollTop: jQuery(".ui-dialog").offset().top-30 }, 500);
 	});
 }
 function open_dialog(nid) {
+		jQuery(".ui-dialog-content").dialog("close").remove();
 	jQuery('<div></div>').dialog({
 		width : 760,
 		// height: 4	00,
@@ -404,8 +411,7 @@ jQuery(document).ready(function() {
 	if (!jQuery("html").hasClass("no-csstransforms3d")) {
 		Drupal.avishay.transform = "transform";
 	}
-	jQuery("[nid]").live("click", function(e) {
-		jQuery(".ui-dialog-content").dialog("close").remove();
+	jQuery("[nid]").live("click", function(e) {		
 		var nid = jQuery(e.currentTarget).attr("nid");
 		open_dialog(nid);
 	});
