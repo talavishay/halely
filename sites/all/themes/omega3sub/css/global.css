@@ -29,7 +29,7 @@ a:hover {
 .logo-img {
   margin-left: 45px;
 position: relative;
-top: 9px;
+top: 6px;
 z-index: 1;
 }
 #close_btn{
@@ -143,7 +143,12 @@ font-weight: bold;
  * */
 /*.isotope-element.nid-141 ,
 .isotope-element.nid-142 ,
+<<<<<<< Updated upstream
 .isotope-element.nid-143 ,
+=======
+.isotope-element.nid-143 ,*/
+.grid-12 .isotope-element.nid-213 ,
+>>>>>>> Stashed changes
 .grid-12 .isotope-element.nid-187 ,
 .grid-12 .isotope-element.nid-144 ,
 .grid-12 .isotope-element.nid-157 {
@@ -738,9 +743,9 @@ margin: 23px 0 33px;
 .field-name-field-background {
   width: 100%;
 }
+.page-node-213 #page-title,
 .page-node-187 #page-title,
-.page-node-188 #page-title
-{
+.page-node-188 #page-title{
   display: none;
 }
 #block-views-menus-block-6 .block-title {
@@ -826,6 +831,7 @@ text-decoration: none;
 /*
 *node 187
 */
+#node-about-213 table ,
 #node-about-187 table {
  font-size: 12px;
 letter-spacing: 1.5px;
@@ -835,18 +841,23 @@ top: 26px;
 width: 596px;
 line-height: 5px;
 }
+#node-about-213 table tr:nth-child(n+2) td:first-child ,
 #node-about-187 table tr:nth-child(n+2) td:first-child {
   width: 46%;
 }
+#node-about-213  table tr:first-child ,
 #node-about-187  table tr:first-child {
   height: 23px;
 }
+#node-about-213  table  tr:nth-child(2) ,
 #node-about-187  table  tr:nth-child(2) {
   height: 170px;
 }
+#node-about-213  tr:nth-child(3) ,
 #node-about-187  tr:nth-child(3) {
   height: 182px;
 }
+#node-about-213 tr:nth-child(4) td ,
 #node-about-187 tr:nth-child(4) td {
   padding-left: 124px;
 }

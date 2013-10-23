@@ -226,7 +226,7 @@ Drupal.avishay.about = function() {
 			;
 
 		}
-		if (jQuery(".page-node-187").length) {
+		if (jQuery(".page-node-213").length) {
 			var img = jQuery('<img id="about_dog" src="/sites/all/themes/omega3sub/images/about_dog.png"/>');
 			jQuery("#block-views-menus-block-6 .content").after(img);
 			jQuery("#block-views-menus-block-6 .content").height(h - (t + 13) - 63);
