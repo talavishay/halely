@@ -444,6 +444,7 @@ color: #4F4D4D;
 font-size: 14px;
 font-weight: bold;
 margin-bottom: 5px;
+cursor: pointer;
 
 }
 .ui-dialog .field-name-body {
