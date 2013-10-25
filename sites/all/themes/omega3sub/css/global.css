@@ -276,36 +276,42 @@ display: none;
  * isotope popup
  * */
 div#controls {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  z-index: 900;
+  display: none;
+position: absolute;
+top: 50%;
+width: 100%;
+z-index: 900;
+}
+.field-name-field-gallery:hover #controls {
+  display: block;
 }
 div#controls #last ,
 div#controls #prev {
 	  float: right;
  }
 div#controls #next {
-  background: url("/sites/all/themes/omega3sub/images/arrow_left.png") repeat scroll right 0 transparent;
-  float: right;
-  height: 33px;
-  text-indent: -999px;
-  width: 20px;
-  
-  cursor: pointer;
+ background: url("/sites/all/themes/omega3sub/images/arrow_left.png") no-repeat scroll right 0 rgba(0, 0, 0, 0);
+cursor: pointer;
+float: right;
+height: 52px;
+text-indent: -999px;
+width: 31px;
 }
 div#controls #prev {
   background: url("/sites/all/themes/omega3sub/images/arrow_right.png") repeat scroll left 0 transparent;
 
-  height: 33px;
-  text-indent: -999px;
-  width: 20px;
-  
   cursor: pointer;
+float: right;
+height: 52px;
+text-indent: -999px;
+width: 31px;
 }
 div#controls #first ,
 div#controls #next {
   float: left;
+}
+#first, #last {
+  display: none;
 }
 div#controls #first {
   background: url("/sites/all/themes/omega3sub/images/arrow_left.png") repeat scroll left 0 transparent;
@@ -527,6 +533,14 @@ width: 25px;
 }
 #block-block-2 {
   border-top: 2px dotted #0698C2;
+}
+#block-views-menus-block-5 h3 {
+  color: #FA9403;
+font-family: alef hebrew;
+font-size: 14.5px;
+font-weight: bold;
+margin: 6px 0;
+margin-left: 8px !important;
 }
 /*
  * fotter
