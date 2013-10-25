@@ -128,6 +128,7 @@ function open_popup_node(that, nid) {
 		});
 		jQuery(dialog).prepend(jQuery("header",dialog));
 		jQuery("html, body").animate({ scrollTop: jQuery(".ui-dialog").offset().top-30 }, 500);
+		jQuery(".title", dialog).click(function(){ window.open(jQuery(".field-name-field-link a", dialog).first().attr('href'),'_blank')})
 	});
 }
 function open_dialog(nid) {

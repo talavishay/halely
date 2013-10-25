@@ -373,8 +373,9 @@ line-height: 0px;
  * .field-name-field-gallery slideshow controls
  * */
 .ui-dialog .field-name-field-gallery{
-	margin-bottom: 10px;
-	position: relative;
+	direction: ltr;
+margin-bottom: 10px;
+position: relative;
 }
 
 .field-name-field-gallery #nav {
