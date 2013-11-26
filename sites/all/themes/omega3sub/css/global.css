@@ -536,7 +536,8 @@ width: 25px;
 #block-block-2 {
   border-top: 2px dotted #0698C2;
 }
-#block-views-menus-block-5 h3 {
+/*#block-views-menus-block-5 h3 {*/
+.view-menus h3 {
   color: #FA9403;
 font-family: alef hebrew;
 font-size: 14.5px;
