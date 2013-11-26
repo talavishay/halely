@@ -301,8 +301,8 @@ Drupal.behaviors.omega3sub = {
 			}
 		});
 
-		if (window.location.pathname === "/") {
-			jQuery('.menu a').each(function(i, val) {
+		if ( window.location.pathname === "/category") {
+			jQuery('.menu a:not(#all)').not("#all").each(function(i, val) {
 				jQuery(val).bind("click", function(e) {
 					// clear transform history on elements
 					jQuery("#isotope-container [trans]").each(function(i, val) {
@@ -327,7 +327,10 @@ Drupal.behaviors.omega3sub = {
 							});
 						}
 						if (jQuery(e.currentTarget).attr("href") !== "/#about") {
-							var href = jQuery(e.currentTarget).attr('href').replace(/^\/#/, ''), option = jQuery.deparam(href, true);
+							var href = jQuery(e.currentTarget).attr('href').replace(/^\/#/, '');
+							href = href.replace(/\/category#/, '');
+							
+							var option = jQuery.deparam(href, true);
 							// set hash, triggers hashchange on window
 							jQuery.bbq.pushState(option);
 							return false;
