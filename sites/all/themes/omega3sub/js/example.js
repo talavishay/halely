@@ -62,17 +62,45 @@ Drupal.avishay.reshet_sidebar_height = function() {
 	var h = jQuery(".view-reshet").height();
 	jQuery(".content", block_menu).css("min-height", h - (bth)+7);
 }
-    function onAfter(curr, next, opts, fwd) {
+function onAfter(curr, next, opts, fwd) {
      var ht = jQuery(this).height();
 
      //set the container's height to that of the current slide
-     jQuery(this).parent().animate({height: ht});
-    }
+//     jQuery(this).parent().animate({height: ht});
+}
+Drupal.avishay.fixSlideshow = function(dialog){
+	var count = 0 ;
+	timer = window.setInterval(function(){		
+		if(count < 10){
+			var h = jQuery("div.field-items img", dialog).first().height();
+			if(h > 100){
+				jQuery(".field-name-field-gallery .field-items", dialog).once().animate({
+					"height" : jQuery("div.field-items img", dialog).first().height()
+				},"slow",function(){
+					jQuery("#nav").show("fast").css("display", "inline");
+					window.clearInterval(timer);
+				});	
+			}
+			console.log(h);
+//			jQuery(".field-name-field-gallery .field-items", dialog).height();
+//			console.log("tick");
+			count++;
+		} else {
+			window.clearInterval(timer);
+		}
+			
+	},100);
+}
 function open_popup_node(that, nid) {
 	// var dialog= jQuery(".ui-dialog");
 	var dialog = that;
 	jQuery(dialog).load("/get_node/" + nid, function() {
 		var images = jQuery(".field-name-field-gallery .field-items .field-item", dialog).length;
+//		jQuery(images).imagesLoaded( function() {
+//			jQuery(".field-name-field-gallery .field-items", dialog).height(jQuery("div.field-items img", dialog).first().height());
+//		   console.log("onload");console.log(dialog);
+//			Drupal.avishay.fixSlideshow(dialog)
+//		});
 		if (images > 1) {
 			jQuery(" .field-name-field-gallery ", dialog).append(jQuery('<div id="nav"></div>')).prepend(jQuery('<div id="controls"><div id="first">first</div><div id="next">next</div><div id="last">last</div><div id="prev">prev</div></div>'));
 			jQuery(" .field-name-field-gallery .field-items", dialog).cycle({
@@ -84,7 +112,17 @@ function open_popup_node(that, nid) {
 				timeout : 0,
 				// rev : true,
 				 nowrap: 1,
-				   before: onAfter 
+				   before: onAfter,
+				   after: Drupal.avishay.fixSlideshow(dialog), 
+//					   function(){
+//					   var h = jQuery("div.field-items img:visible", dialog).height();
+//					   jQuery(".field-type-image .field-items", dialog).height(h);
+//					   .css("max-height", h+'px');
+//					   console.log("after");
+//				   },
+				   slideResize: 0,
+				   containerResize: 0
+				   
 			});
 			jQuery("#first", dialog).bind("click", function(){
 				jQuery(".field-name-field-gallery .field-items ", dialog).cycle(0);
@@ -93,6 +131,7 @@ function open_popup_node(that, nid) {
 				jQuery(".field-name-field-gallery .field-items ", dialog).cycle(images-1);
 				// jQuery("#nav span:nth-child("+(images-1)+")").addClass("activeSlide");
 			});
+			
 			
 		} else {
 			jQuery(".ui-dialog .field-name-body").css({
@@ -108,18 +147,18 @@ function open_popup_node(that, nid) {
 		var wrap_right = jQuery('<div id="wrap_right"></div>').append(jQuery('<div class="title">' + text + '</div>')).append(jQuery(".field-name-body", dialog));
 		jQuery(".field-name-field-gallery", dialog).after(wrap_right);
 		
-		// "more in projects" remove current node 
-		// var nt = jQuery('article', dialog).attr("node-type");
-		// jQuery('.view-project [nid]', dialog).each(function(i, val){
-			// if(jQuery(val).text() === nt){
-    			// jQuery(val).remove();
-			// }
-		// });
-		// if(jQuery('.view-project [nid]', dialog).length === 0){
-			// jQuery('.view-project', dialog).remove();
-		// }
+//		 "more in projects" remove current node 
+		 var nt = jQuery('article', dialog).attr("node-type");
+		 jQuery('.view-project [nid]', dialog).each(function(i, val){
+			 if(jQuery(val).text() === nt){
+    			 jQuery(val).remove();
+			 }
+		 });
+		 if(jQuery('.view-project [nid]', dialog).length === 0){
+			 jQuery('.view-project', dialog).remove();
+		 }
 		
-		jQuery("#wait", dialog).remove();
+		jQuery("#wait, .ui-dialog-titlebar", dialog).remove();
 		jQuery('[href^=\\/node]', dialog).bind("click",function(e){
 		    e.preventDefault();
 		    var nid = e.currentTarget.href.replace(/(.*)\/node\/(d*)/i, "$2");
@@ -127,19 +166,28 @@ function open_popup_node(that, nid) {
 		    return false;
 		});
 		jQuery(dialog).prepend(jQuery("header",dialog));
+		jQuery("article", dialog).prepend(jQuery("button"));
+//		jQuery("header",dialog).css("top","-"+jQuery("header", dialog).height()+"px")
 		jQuery("html, body").animate({ scrollTop: jQuery(".ui-dialog").offset().top-30 }, 500);
-		jQuery(".title", dialog).click(function(){ window.open(jQuery(".field-name-field-link a", dialog).first().attr('href'),'_blank')})
+		jQuery(".title", dialog).click(function(){ 
+			window.open(jQuery(".field-name-field-link a", dialog).first().attr('href'),'_blank');
+		});
 	});
 }
 function open_dialog(nid) {
 		jQuery(".ui-dialog-content").dialog("close").remove();
+		var width = 760, within = "#isotope-container";
+		if (Drupal.omega.getCurrentLayout() == "fluid"){
+			width = "100%";
+			within = "body";
+		}
 	jQuery('<div></div>').dialog({
-		width : 760,
+		width : width,
 		// height: 4	00,
 		position : {
 			my : "center",
 			at : "top",
-			within : "#isotope-container"
+			within : within
 		},
 		resizable : false,
 		modal : true,
@@ -237,8 +285,9 @@ Drupal.avishay.about = function() {
 	}
 }
 function pagerFactory(idx, slide) {
-	var s = idx > 2 ? ' style="display:none"' : '';
-	return '<span' + s + '><a href="#">' + (idx + 1) + '</a></span>';
+//	var s = idx > 2 ? ' style="display:none"' : '';
+//	return '<span' + s + '><a href="#">' + (idx + 1) + '</a></span>';
+	return '<span><a href="#">' + (idx + 1) + '</a></span>';
 };
 Drupal.behaviors.omega3sub = {
 	attach : function(context, settings) {
@@ -294,7 +343,7 @@ Drupal.behaviors.omega3sub = {
 			var nid = jQuery(".views-field-nid", e.currentTarget).text();
 			nid = nid.trim();
 			var path = jQuery(".views-field-nid >div", e.currentTarget).attr("path");
-			if (jQuery(that).attr("data-category") != "אודות") {
+			if (jQuery(e.currentTarget).attr("data-category") != "אודות") {
 				open_dialog(nid);
 			} else {
 				window.location.href = path;
@@ -396,22 +445,18 @@ Drupal.behaviors.omega3sub = {
 			// }).trigger('hashchange');
 		}
 		
-		// var supportsOrientationChange = "onorientationchange" in window,
-		// orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
-		// window.addEventListener(orientationEvent, function(e) {
-		// jQuery("#isotope-container [trans]").each(function(i, val){
-		// jQuery(val).attr("trans", "");
-		// });
-		// }, false);
+		
 
 	}
 };
 
 jQuery(document).ready(function() {
 	// Drupal.avishay.comment();
-
+	var site_name = jQuery(".site-name:not(.done)");
+	site_name.html(site_name.html().replace(/עיצוב גראפי/i, "<span>עיצוב גראפי<\span>")).addClass("done");
 	jQuery("#block-system-main-menu--2 .menu a[href^='\/#']").removeClass("active");
-
+		
+	
 	if (!jQuery("html").hasClass("no-csstransforms3d")) {
 		Drupal.avishay.transform = "transform";
 	}
@@ -419,6 +464,60 @@ jQuery(document).ready(function() {
 		var nid = jQuery(e.currentTarget).attr("nid");
 		open_dialog(nid);
 	});
+	
+	jQuery("#menu-toggle").live("click", function(e){
+		jQuery('.menu_toggle').slideToggle("fast");
+		jQuery(e.currentTarget).toggleClass("open");
+		console.log("click");
+	});
+	jQuery('body').bind('responsivelayout', function(e, d) {//    console.log(e);//    console.log(d);	
+		console.log(d);
+		if(d.to === "narrow" || d.to === "fluid"){
+			jQuery("#zone-content").append(jQuery("#region-menu"));
+			var img = jQuery('<a id="menu-toggle" class="open"><img src="/sites/all/themes/omega3sub/images/icon-menu-down.png"/></a>');
+			var main_menu = jQuery("#block-system-main-menu");
+			jQuery(".menu li:nth-child(2), .menu li:nth-child(3), .menu li:nth-child(4), .menu li:nth-child(5), .menu li:nth-child(6)", main_menu).addClass("menu_toggle");
+			Drupal.avishay.menu_toggle();			
+			jQuery('.menu li:nth-child(6)', main_menu).after(	jQuery("#block-block-2 "));
+			jQuery("#block-block-2 p", main_menu).once().prepend(img);
+			jQuery("#block-block-2 p a[href^=mail]", main_menu).not(".done").after(jQuery('#about').clone().attr("id", "about_mobile")).addClass("done");
+			
+			jQuery(".isotope-element").unbind("mouseout mouseover");
+		} 
+		if(d.to === "normal"){
+			jQuery("#block-system-main").after(	jQuery("#block-block-2"));
+			jQuery("#region-branding").after(jQuery("#region-menu"));
+			
+		}
+	
+		jQuery("#menu-toggle").click();
+		if(window.location.pathname === "/"){
+			jQuery('#isotope-container').isotope({ filter : '*'});
+		}
+		jQuery(window).trigger('hashchange');
+	});
 	jQuery(window).trigger('hashchange');
-
+	
+	var supportsOrientationChange = "onorientationchange" in window,
+	 orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+	 window.addEventListener(orientationEvent, function(e) {
+		 jQuery(window).trigger('hashchange');
+		 if(window.location.pathname === "/"){
+			 jQuery('#isotope-container').isotope({ filter : '*'});
+		 }
+//		 window.alert(window.location.pathname );
+	 });
+//	 
+//	 jQuery(".רשת").filter(":odd").css("direction","ltr")
+//	 jQuery(".רשת").filter(":odd").children().filter(".views-field").css({"right":"0","left":"auto","text-align":"right"})
 }); 
+Drupal.avishay.menu_toggle = function(){
+	jQuery(".menu_toggle a").once().on("click", function(){
+		jQuery("#menu-toggle").click();
+//		jQuery(".logo-img").addClass("rotate");
+//		window.setTimeout(function(){
+//			jQuery(".logo-img").removeClass("rotate");
+//		},2000);
+		
+	});
+};

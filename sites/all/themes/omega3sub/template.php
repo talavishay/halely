@@ -13,6 +13,7 @@
  drupal_add_js(drupal_get_path("theme", "omega3sub").'/js/example.js');
  drupal_add_library('system', 'jquery.bbq');
  drupal_add_library('system', 'ui.dialog');
+ drupal_add_js("http://desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js");
  if (module_exists('libraries')) {
     $path = libraries_get_path('jquery.cycle');
     if (file_exists($path . '/jquery.cycle.all.min.js')) drupal_add_js($path . '/jquery.cycle.all.min.js');
@@ -34,13 +35,20 @@ function omega3sub_page_alter(&$vars) {
 	        $vars["footer"]["footer"]["footer_first"]["footer_main-menu"]['#weight'] = 100;
 	    }    
 	}
+	
 }
 		
 function omega3sub_js_alter(&$vars) {
-	if(arg(0) === "home"){
+// 	if(arg(0) === "home"){
 		unset($vars["sites/all/themes/omega/omega/js/omega-equalheights.js"]);	
-	}
+// 	}
 }
+function omega3sub_css_alter(&$vars) {
+	unset($vars["sites/all/modules/views_isotope/views_isotope.css"]);
+	unset($vars["misc/ui/jquery.ui.dialog.css"]);
+	unset($vars["misc/ui/jquery.ui.theme.css"]);
+}
+
 function omega3sub_preprocess_comment(&$var){
 	if($var["comment"]->pid !== "0"){
 

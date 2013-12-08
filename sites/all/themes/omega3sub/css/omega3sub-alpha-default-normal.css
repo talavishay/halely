@@ -1,9 +1,27 @@
 /* This file will hold styles that are loaded using the same media query as the normal grid. */
 /* If you are using the default media queries provided by Omega, these styles will also
  *  apply to the widescreen layout unless they are overridden by the widescreen styles. */
+* {
+    max-width: inherit; 
+}
+html,body{
+	background-color: white !important;
+}
+footer{
+display: block;
+}
+.grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+/*
 #zone-header .region-menu-inner {
   margin: 0 auto;
   width: 1010px;
+}
+*/	
+#zone-header {
+    width: 100%;
 }
 /*
  * region-branding
@@ -18,8 +36,20 @@
   
   width: 960px;
 }
-.site-name {
-  margin-top: 17px;
+img#logo {
+    transform: scaleY(0.9);
+ position: static;
+}
+h1.site-name, h2.site-name {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 17px !important;    
+    font-size: 36px;
+}
+
+h1.site-name span, h2.site-name span {
+    font-size: inherit;
 }
 .site-name-slogan {
   float: right;
@@ -33,8 +63,15 @@ margin-right: 74px;
   letter-spacing: 0.9px;
   transform: scaleY(1.1);
 }
-#breadcrumb  {
-  display: none;
+.logo-img {
+  margin-left: 45px;
+position: relative;
+top: 6px;
+  left: 0;
+z-index: 1;
+  background-color: rgba(0, 0, 0, 0);
+    height: auto;
+width: auto;
 }
 
 /*
@@ -53,7 +90,9 @@ width: 100%;
 	-o-border-image: url(/sites/all/themes/omega3sub/images/menu_border.png) 1 0 0 repeat; 
 	border-image: url(/sites/all/themes/omega3sub/images/menu_border.png) 1 0 0 fill repeat;
 	/*border-top:1px dotted gray;*/
-}        
+  position: static;
+        background-color: #E1EFEF;
+} 
 .region-footer-first-inner > div {
   display: inline-block;
   float: right;
@@ -62,35 +101,52 @@ width: 100%;
 	float: left;
 }
 #region-menu .menu {
-  padding: 0 93px 0 93px;
+  /* padding: 0 93px 0 93px; */
+    display: block;
+    margin: 0 auto !important;
+    width: 824px;
+  
 }
-.menu li{
-	display: inline;
-margin-right: 0;
-padding-left: 0;
-padding-top: 0;
-margin-left: 3px;
+ .menu li.leaf, 
+#block-system-main-menu .menu li.leaf, 
+ .menu li.collapsed,
+#block-system-main-menu .menu li.collapsed{
+display: inline !important;
+background-color: transparent !important;
+background-image:none;
+border-top: medium none !important;
+ padding:  0 ;
+ margin: 0 0.5em 0 0;
 }
-.menu li a {
-	text-decoration: none;
-}
-#region-menu  .menu li a {
+#region-menu #block-system-main-menu .menu li a {
 font-size: 18px;
 letter-spacing: 2px;
 line-height: 24px;
+display: inline;
 }
+#region-menu .menu li:nth-child(-1n+6) a.active-i {
+letter-spacing: 1px ;
+}
+.menu  li:not(.last) a:after{
+content: ":";
+}
+
 .menu  li:not(.last) a:after{
 padding-right: 4px;
 }
+
 #region-menu .menu li:nth-child(7){
 	margin-right: 63.7px;
 } 
-#region-menu .menu li:nth-child(1n+7) a {
+#region-menu #block-system-main-menu .menu li:nth-child(1n+7) a {
 font-size: 16px;
 letter-spacing: 0.7px;
 }
-#region-menu .menu li:nth-child(n+7) a:after {
+#region-menu #block-system-main-menu .menu li:nth-child(n+7) a:after {
   padding-right: 5px;
+}
+#block-system-main-menu .menu li:nth-child(n+7):after {
+    content: "";
 }
 /*
  * block- contact
@@ -99,10 +155,30 @@ letter-spacing: 0.7px;
 	float: left;
 	font-size: 11px;
           margin-top: 45px;
+ padding:0px;
 }
 
 #block-block-2 p {
   padding-top: 9px;
+    margin-bottom: 20px;
+}
+
+#block-block-2 a[href^="mailto"] {
+    background: none;
+    padding-right: 0px;
+}
+#block-block-2 a[href^="mailto"] span{
+display:inline;
+}
+#block-block-2 {
+  border-top: 2px dotted #0698C2;
+}
+#block-block-2 a{
+ color: #DA8E05 !important;
+}
+#about_mobile,
+#menu-toggle{
+    display: none;
 }
 /*
  * zone-content-wrapper
@@ -126,9 +202,9 @@ letter-spacing: 0.7px;
   margin: 0 auto !important;
   width: 896px;
 }
-.front #region-content.grid-10 {
+ .front #region-content.grid-10 {
   margin: auto 5px;
-width: 766px;
+width: 766px !important;
 position: relative;
 left: -30px;
 }
@@ -198,11 +274,37 @@ max-width: 762px;
 padding: 7px  8px;
 width:762px;
 }
+.view-reshet {
+        background-color: #E5E9EC;
+margin-top: 5px;
+}
+
+#isotope-container{
+        background: url("/sites/all/themes/omega3sub/images/reshet-bg.gif") repeat scroll 0 0 / 108.3px 108px transparent;
+border: 3px solid white;
+overflow: visible !important;
+min-height: 320px;
+}
+
 .isotope-element{		
 	/*border: 2px solid transparent;*/
 height: 104px;
 margin: 2px;
 width: 104px;
+}
+.isotope, .isotope .isotope-item ,
+.masonry, .masonry .masonry-brick {
+  transition-duration: 1.5s;
+}
+.isotope-element .views-field-title.fadein,
+.isotope-element .views-field-type.fadein{
+    transition-duration: 0.5s;
+     
+}
+.isotope-element .views-field-title.fadeout,
+.isotope-element .views-field-type.fadeout{
+    transition-duration: 1s;
+     
 }
 /*
  * blog

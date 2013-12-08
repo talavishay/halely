@@ -4,6 +4,11 @@
 *{
 font-family: "Alef Hebrew",“Helvetica Neue”,Helvetica,Arial,sans-serif !important;
 }
+body{
+/*
+opacity: 0;
+*/
+}
 .field-name-body img {
   max-width: 100%;
   height: auto;
@@ -11,13 +16,14 @@ font-family: "Alef Hebrew",“Helvetica Neue”,Helvetica,Arial,sans-serif !impo
 #messages{
 	z-index:99;
 }
+
+#breadcrumb {
+    display: none;
+}
 .front #messages .error{
 	display: none;
 }
-.isotope, .isotope .isotope-item ,
-.masonry, .masonry .masonry-brick {
-  transition-duration: 1.5s;
-}
+
 a:hover {
   color: inherit;
   text-decoration: none;
@@ -25,12 +31,6 @@ a:hover {
 
 #region-branding a {  
 	color:  #017b9e;
-}
-.logo-img {
-  margin-left: 45px;
-position: relative;
-top: 6px;
-z-index: 1;
 }
 #close_btn{
 	background-image: url("/sites/all/themes/omega3sub/images/close_btn.png");
@@ -86,24 +86,12 @@ footer#section-footer p:last-child{
 /*
  * Header
  */
-#zone-header{
-	width: 100%;
-}
-img#logo {
-  transform: scaleY(0.9);
-}
-.region-menu {
-	background-color: #E1EFEF;
-}
 .menu li{
-	list-style: none;
+	list-style: none outside none !important;
 }
-#region-menu  .menu li a {
+ .menu li a {
 	color: #045971;
-}
-
-.menu  li:not(.last) a:after{
-content: ":";
+    text-decoration: none;
 }
 #region-menu .menu li:nth-child(6) a:after {
   content: "";
@@ -111,7 +99,6 @@ content: ":";
 #region-menu .menu li:nth-child(-1n+6) a.active-i {
 color: #EEAA2E;
 font-weight: bold;
-letter-spacing: 1px;
 }
 #about.active-i  {
  color: #FD0640 !important;
@@ -179,18 +166,11 @@ height: 212px;
     height: inherit;
  
 }
-#isotope-container{
-	background: url("/sites/all/themes/omega3sub/images/reshet-bg.gif") repeat scroll 0 0 / 108.3px 108px transparent;
-border: 3px solid white;
-overflow: visible !important;
-min-height: 320px;
-}
 .isotope-element{	
 	background-color: transparent !important;
-}
-.view-reshet {
-	background-color: #E5E9EC;
-margin-top: 5px;
+	 color: #FFFFFF;
+     overflow: hidden; 
+    /* max-height: 105px; */
 }
 .draggable img {
   height: auto;
@@ -201,7 +181,7 @@ margin-top: 5px;
 .isotope-element img {
   /*margin: 0 auto;*/
   text-align: center;
-      height: 100% !important;
+      height: auto;
     margin: 0 auto;
     width: 100% !important;
 }
@@ -239,14 +219,10 @@ opacity:0;
 .isotope-element .views-field-title.fadein,
 .isotope-element .views-field-type.fadein{
 	opacity:1;
-	transition-duration: 0.5s;
-	 
 }
 .isotope-element .views-field-title.fadeout,
 .isotope-element .views-field-type.fadeout{
 	opacity:0;
-	transition-duration: 1s;
-	 
 }
 .no-canvas .isotope-element .views-field-title,
 .no-canvas .isotope-element .views-field-type{
@@ -332,46 +308,16 @@ div#controls #last {
 .ui-dialog li {
   list-style: square inside none;
 }
-.ui-widget-overlay {
-  background-color: rgba(0, 0, 0, 0.75);
-  opacity: 1;
-  background-image: none;
-}
-.ui-dialog .ui-dialog-titlebar{
-	display:none;
-}
-.ui-dialog-content{
-	overflow: visible !important;
-	padding:10px 10px 25px !important;
-}
-.ui-dialog .ui-dialog-titlebar-close{
-right: 20px;
-top: 30px;
-z-index: 100;
-}
-.ui-dialog header {
-    position: absolute;
-top: -20px;
-margin: 0px;
-padding: 0px;
-    
-}
 
-.ui-dialog header a,
-.ui-dialog header h2{
-	margin: 0px;
-	padding: 0px;
-color: #fecb16;
-text-decoration: none;
-font-size: 18px;
-font-weight: bold;
-letter-spacing: 1px;
-vertical-align: top;
-line-height: 0px;
-}
+
 /*
  * .field-name-field-gallery slideshow controls
  * */
+ 
+ .field-type-image .field-item {
+ 
+    width: 100%;
+}
 .ui-dialog .field-name-field-gallery{
 	direction: ltr;
 margin-bottom: 10px;
@@ -380,9 +326,10 @@ position: relative;
 
 .field-name-field-gallery #nav {
   bottom: 3px;
-left: 15px;
+left: 4%;
 position: absolute;
 z-index: 100;
+width: 92%;
 
 }
 
@@ -390,7 +337,7 @@ z-index: 100;
     display: none;
 }
 #nav span {
-	display: inline !important;
+	display: inline ;
 }
 .field-name-field-gallery #nav a{	
 	color: #4f4d4d;
@@ -532,9 +479,6 @@ width: 25px;
   width: 25px;
   text-indent: -9999px;
   vertical-align: super;
-}
-#block-block-2 {
-  border-top: 2px dotted #0698C2;
 }
 /*#block-views-menus-block-5 h3 {*/
 .view-menus h3 {
@@ -874,4 +818,65 @@ line-height: 5px;
 #node-about-213 tr:nth-child(4) td ,
 #node-about-187 tr:nth-child(4) td {
   padding-left: 124px;
+}
+
+/* pop up  */
+/* .ui-widget-content {
+    background-image: none;
+    background-color: transparent;
+    border: 0px solid ;
+    
+} */
+.ui-dialog-content{
+    /* overflow: visible !important;
+    padding:10px 10px 25px !important; */
+}
+.ui-dialog .ui-dialog-titlebar-close{
+right: 20px;
+top: 20px;
+z-index: 100;
+position: absolute;
+}
+.ui-widget-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  opacity: 1;
+  background-image: none;
+}
+
+.ui-dialog .ui-dialog-titlebar{
+    display:none;
+}
+.ui-dialog #wait ,
+.ui-dialog article {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 4px;
+    padding: 15px 15px 25px;
+    position:relative;
+    overflow:hidden;
+}
+button {
+    background: url("/sites/all/themes/omega3sub/images/close_btn.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+}
+.ui-dialog header {
+    /* position: absolute;
+    top: -20px; */
+    margin: 0px;
+    padding-right: 15px;
+    
+}
+.ui-dialog header a,
+.ui-dialog header h2{
+    margin: 0px;
+    padding: 0px;
+color: #fecb16;
+text-decoration: none;
+font-size: 18px;
+font-weight: bold;
+letter-spacing: 1px;
+vertical-align: top;
+
+}
+#nav{
+	display: none;
 }

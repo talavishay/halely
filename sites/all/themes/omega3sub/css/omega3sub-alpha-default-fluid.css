@@ -4,8 +4,13 @@
 /*display:none;*/
 
 }
-footer{
-display:none;
+body.responsive-layout-fluid  aside,
+body.responsive-layout-fluid footer{
+display:none !important;
+}
+body.responsive-layout-fluid #region-content{
+	width: 100%;
+	margin: auto 0px;
 }
 /* This file will hold styles that are loaded using the same media query as the narrow grid. */
 /* If you are using the default media queries provided by Omega, these styles will also
@@ -18,13 +23,13 @@ body, html{
   background-color: #E1EFEF;
   margin-left: auto !important;
     margin-right: auto !important;
-    position:relative;
-  
+    
+ min-height:450px; 
 }
 /* body.front #region-menu{
 	position: absolute;
 } */
-body.responsive-layout-narrow {
+body.responsive-layout-fluid {
   min-width: 100%;
 }
 /* body.responsive-layout-narrow .region ,
@@ -38,11 +43,15 @@ body.responsive-layout-narrow .zone {
   float: none;
 }
 h1.site-name, h2.site-name {
-font-size: 18px;
+font-size: 17px ;
 margin: 36px 5px 30px;
+}
+h1.site-name span, h2.site-name span{
+	font-size: 16px ;
 }
 img#logo {
     transform: scale(0.8);
+    -webkit-transform: scale(0.8);    
     left: -7px;
     position: absolute;
     top: 8px;
@@ -57,15 +66,21 @@ img#logo {
   top: 5px;
   width: 80px;
 }
-.region.grid-1, .region.grid-2, .region.grid-3, .region.grid-4, .region.grid-5, .region.grid-6, .region.grid-7, .region.grid-8, .region.grid-9, .region.grid-10, .region.grid-11, .region.grid-12 {
-  margin: 0px;
+.rotate{
+	transform: rotate(360deg);
+	transition-duration : 2s;
 }
-#region-menu {
-  bottom: 0;
-    position: fixed;
-    right: 0;
-    width: 100%;
-    z-index: 9;
+.region.grid-1, .region.grid-2, .region.grid-3, .region.grid-4, .region.grid-5, .region.grid-6, .region.grid-7, .region.grid-8, .region.grid-9, .region.grid-10, .region.grid-11, .region.grid-12 {
+  /* margin: 0px; */
+}
+.responsive-layout-fluid #region-menu {
+	bottom: 0;
+	position: fixed;
+	right: 0;
+	width: 100%;
+	z-index: 9;
+	margin: 0px !important;
+	padding: 0px !important;
 }
 /* menu */
 #region-menu {
@@ -87,13 +102,18 @@ padding: 0;
 #block-system-main-menu .menu li:nth-child(8){
 margin-right:10px;
 }
-
+/*
 #block-system-main-menu .menu li:nth-child(n+7):after {
     content: ":";
 }
 #block-system-main-menu .menu li:nth-child(10):after {
     content: "";
 }
+* */
+#block-system-main-menu .menu li:nth-child(n+7){
+   display: none ;
+}
+
 #block-system-main-menu .menu li:nth-child(2) a,
 #block-system-main-menu .menu li:nth-child(3) a,
 #block-system-main-menu .menu li:nth-child(4) a,
@@ -107,21 +127,40 @@ margin-right:10px;
 #block-system-main-menu .menu li:nth-child(4) ,
 #block-system-main-menu .menu li:nth-child(5) ,
 #block-system-main-menu .menu li:nth-child(6) {
+background: url("/sites/all/themes/omega3sub/images/icons_mobile.png") no-repeat scroll 0 0 #E1EFEF;
 border-top: 2px solid #FFFFFF;
 margin: 0;
 padding: 8px 10px;
-background-color: #E1EFEF;
 }
-#menu-toggle{
-border: 1px solid #808080;
-border-radius: 3px;
-margin: 0px 0 0 22px;
-padding: 5px;	
-position:relative;
-z-index: 10;
+#block-system-main-menu .menu li:nth-child(2) {
+ background-position: 5px 5px;
+}
+#block-system-main-menu .menu li:nth-child(3) {
+ background-position: 5px -47px;
+}
+#block-system-main-menu .menu li:nth-child(4) {
+ background-position: 5px -101px;
+}
+#block-system-main-menu .menu li:nth-child(5) {
+ background-position: 5px -156px;
+}
+#block-system-main-menu .menu li:nth-child(6) {
+ background-position: 5px -216px;
 }
 
-#menu-toggle.open{
+#menu-toggle{
+    margin: 0 0 0 10px;
+    z-index: 10;
+    /* background: url('/sites/all/themes/omega3sub/images/icon-menu-down.png') no-repeat center center; */
+}
+#menu-toggle img{
+        border: 1px solid #808080;
+    border-radius: 3px;
+    padding: 4px 5px;
+    position: relative;
+    top: -4px;
+}
+#menu-toggle.open img{
     box-shadow: 0 0 10px 0 #808080 inset;
 }
 
@@ -129,7 +168,8 @@ z-index: 10;
 
 #block-block-2{
 	background: none repeat scroll 0 0 #FFFFFF;
-	padding: 6px 10px;
+	padding-right: 10px;
+	padding-left: 10px;
 	border: none;
 }
 #block-block-2 a[href^="mailto"] {
@@ -139,6 +179,16 @@ z-index: 10;
   line-height: 22px;
   padding-right: 35px;
   color: #017B9E;
+}
+#about_mobile {
+ color: #017B9E !important;
+font-size: 14px;
+margin-right: 7px;
+ba
+}
+#about_mobile:before {
+  content: ":";
+  margin-left: 3px;
 }
 #block-block-2 a[href*="google"],
 #block-block-2 a[href*="facebook"] {
@@ -151,13 +201,26 @@ z-index: 10;
 #block-block-2 p {
   margin-bottom: 0px;
 }
-
+.responsive-layout-fluid #block-block-2 a {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background-position: right center !important;
+}
 /*.isotope-element */	
 .view-reshet {
   background: white;
 }
 .isotope-element {
-  height: 38.25px;
- margin: 1px;
-  width: 38.25px;
+margin: .4%;
+width: 24%;
+}
+
+
+ .ui-dialog img{
+  height: auto;
+    /* max-width: 100%;  */
+       width: 100%;
+}
+.ui-dialog .field-items {
+    max-width: 100%;
 }
