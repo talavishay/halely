@@ -93,6 +93,11 @@ width: 100%;
   position: static;
         background-color: #E1EFEF;
 } 
+#block-system-main-menu {
+    margin: auto;
+    padding-right: 135px;
+    width: 960px;
+}
 .region-footer-first-inner > div {
   display: inline-block;
   float: right;
@@ -101,11 +106,11 @@ width: 100%;
 	float: left;
 }
 #region-menu .menu {
-  /* padding: 0 93px 0 93px; */
+  /* padding: 0 93px 0 93px; 
     display: block;
     margin: 0 auto !important;
     width: 824px;
-  
+  */
 }
  .menu li.leaf, 
 #block-system-main-menu .menu li.leaf, 
@@ -166,6 +171,7 @@ letter-spacing: 0.7px;
 #block-block-2 a[href^="mailto"] {
     background: none;
     padding-right: 0px;
+    float: right;
 }
 #block-block-2 a[href^="mailto"] span{
 display:inline;
