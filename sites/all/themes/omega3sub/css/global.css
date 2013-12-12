@@ -309,7 +309,9 @@ div#controls #last {
 .ui-dialog li {
   list-style: square inside none;
 }
-
+.ui-dialog .ui-button{
+display: none;
+}
 
 /*
  * .field-name-field-gallery slideshow controls
@@ -700,7 +702,8 @@ margin: 23px 0 33px;
 /*about/studio */
 .field-name-field-background img,
 .field-name-field-background {
-  width: 100%;
+ height: auto;
+width: 100%;
 }
 .page-node-213 #page-title,
 .page-node-187 #page-title,
@@ -754,6 +757,16 @@ width: 542px;
   position: absolute;
   right: -15px;
   top: 15px;
+}
+#node-about-188 #toggle{
+  background : url("/sites/all/themes/omega3sub/images/studio-bird-~.png") no-repeat scroll center center;
+	position : absolute;
+                                right : 159px;
+                                top : 27px;
+                                width : 29px;
+                                height : 29px;
+                                z-index : 1;
+                                cursor : pointer;
 }
 #node-about-188 .field-name-body .field-items .field-item {  
 	-moz-border-image :url("/sites/all/themes/omega3sub/images/studio-border.png") 2 2 2 2 repeat repeat;

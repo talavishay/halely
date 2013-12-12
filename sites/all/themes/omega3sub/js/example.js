@@ -172,6 +172,7 @@ function open_popup_node(that, nid) {
 		jQuery(".title", dialog).click(function(){ 
 			window.open(jQuery(".field-name-field-link a", dialog).first().attr('href'),'_blank');
 		});
+		jQuery(".ui-dialog .ui-button").show();
 	});
 }
 function open_dialog(nid) {
@@ -195,9 +196,9 @@ function open_dialog(nid) {
 		show : "explode",
 		open : function() {
 			jQuery(this).append('<img style="margin: 20px auto;display: block;" id="wait" src="/sites/all/themes/omega3sub/images/busy.gif" />');
-			jQuery('.ui-dialog').prepend(jQuery(".ui-dialog .ui-button"));
 			jQuery(".ui-dialog-titlebar", this).remove();
 			open_popup_node(this, nid);
+			jQuery('.ui-dialog').prepend(jQuery(".ui-dialog .ui-button"));
 
 		},
 		close : function() {
@@ -254,21 +255,13 @@ Drupal.avishay.about = function() {
 			"top" : "10px"
 		}).bind("click", function() {
 			jQuery("#node-about-188 .field-name-body .field-items").hide("slow");
-			jQuery("#toggle").css("background", "url(/sites/all/themes/omega3sub/images/studio-bird-+.png) no-repeat");
+			jQuery("#toggle").css("background-image", "url(/sites/all/themes/omega3sub/images/studio-bird-+.png)").addClass("close");
+			
 		});
 		if (jQuery(".page-node-188").length) {
-			var toggle = jQuery('<div id="toggle"></div').css({
-				background : 'url("/sites/all/themes/omega3sub/images/studio-bird-~.png") no-repeat scroll center center transparent',
-				position : "absolute",
-				right : "159px",
-				top : "27px",
-				width : "29px",
-				height : "29px",
-				"z-index" : 1,
-				cursor : "pointer"
-			}).bind("click", function(e) {
+			var toggle = jQuery('<div id="toggle"></div').bind("click", function(e) {
 				jQuery("#node-about-188 .field-name-body .field-items").show("slow");
-				jQuery("#toggle").css("background", 'url("/sites/all/themes/omega3sub/images/studio-bird-~.png") no-repeat scroll center center transparent');
+				jQuery("#toggle").css("background-image", 'url("/sites/all/themes/omega3sub/images/studio-bird-~.png")').removeClass("close");
 			});
 			jQuery("#node-about-188 .field-name-body").before(toggle)
 			jQuery("#node-about-188 .field-name-body .field-items .field-item").prepend(img).append(close);

@@ -20,11 +20,14 @@ body.responsive-layout-fluid #region-content{
     max-width: 320px; 
 } */
 body, html{
-  background-color: #E1EFEF;
   margin-left: auto !important;
     margin-right: auto !important;
     
  min-height:450px; 
+}
+body{
+  background-color: #E1EFEF;
+
 }
 /* body.front #region-menu{
 	position: absolute;
@@ -193,7 +196,7 @@ ba
 #block-block-2 a[href*="google"],
 #block-block-2 a[href*="facebook"] {
   float: left;
-  margin: 0 2px;
+  margin: 0 4px;
 }
 #block-block-2 span {
   display: none;
@@ -216,7 +219,7 @@ width: 24%;
 }
 
 
- .ui-dialog img{
+ .ui-dialog .field-name-field-gallery img{
   height: auto;
     /* max-width: 100%;  */
        width: 100%;
@@ -224,3 +227,85 @@ width: 24%;
 .ui-dialog .field-items {
     max-width: 100%;
 }
+ /* about/studuo  */
+.responsive-layout-fluid #node-about-188 .field-name-field-background img,.responsive-layout-fluid #node-about-188 .field-name-field-background {
+  height: auto;
+  transform: scaleY(1.07);
+  transform-origin: center top 0;
+  width: 122%;
+}
+
+.responsive-layout-fluid .field-name-body p {
+	line-height:15px !important;
+}
+.responsive-layout-fluid .field-name-body .field-item {
+    letter-spacing: 1px !important;
+    padding: 6px !important;
+}
+.responsive-layout-fluid .field-name-body .field-item p:first-of-type {
+    padding-left: 8px !important;
+}
+.responsive-layout-fluid #node-about-188 .field-name-body {
+    background-position: right 28px;
+    background-size: 33% auto;
+    padding: 6px 32% 0 0 !important;
+    width: 65%;
+    z-index: 2;
+}
+.responsive-layout-fluid #toggle:not(.close) {
+display:none;
+}
+.responsive-layout-fluid #toggle.close {
+	right: 28.9% !important;
+	top: 21px !important;
+	z-index: 10 !important;
+}
+.responsive-layout-fluid #close_btn {
+  left: 7px !important;
+  top: 7px !important;
+  transform: scale(0.7);
+  transform-origin: left top 0;
+}
+/*	node-about-213 */
+.responsive-layout-fluid.page-node-213 .section-header {
+background-color: #E1EFEF;
+height: 100px;
+position: relative;
+z-index: 10;
+}
+.responsive-layout-fluid.page-node-213{
+	background-color:#000;
+
+}
+.responsive-layout-fluid #node-about-213 table td {
+display: block;
+    padding-left: 63%;
+    padding-right: 10px;
+}
+.responsive-layout-fluid #node-about-213 table{
+/*	background-color: black;*/
+	right:0px;
+  top: 0;
+}
+.responsive-layout-fluid.page-node-213 tr:last-child td {
+  height: 80px;
+ text-align: right !important;
+}
+.responsive-layout-fluid.page-node-213 .field-name-field-background.field-type-image {
+    bottom: 34px;
+    position: fixed;
+}
+/*  popup gallery*/
+.responsive-layout-fluid #controls {
+    display: block;
+    top: 35%;
+}
+.responsive-layout-fluid #controls > div#next {
+  transform: scale(0.8);
+  transform-origin: left center 0;
+}
+.responsive-layout-fluid #controls > div#prev {
+  transform: scale(0.8);
+  transform-origin: right center 0;
+}
+
