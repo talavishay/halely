@@ -22,9 +22,10 @@
       hide($content['comments']);
       hide($content['links']);	          
       print render($content);
+ 		if(isset($field_project[0])){
+ 	  		if(isset($field_project[0]["tid"])){
       print views_embed_view('project','block_1', $field_project[0]["tid"]);  
-// 		if(isset($field_project[0])){
-// 	  		if(isset($field_project[0]["tid"])){
+
 // 	  			require('phpQuery.php');
 // 		  		$doc = phpQuery::newDocumentHTML( views_embed_view('project','block_1', $field_project[0]["tid"]));
 // 				phpQuery::selectDocument($doc);			 		
@@ -36,8 +37,8 @@
 // 				if(count(pq("[nid]")) != 0){
 // 			  		print $doc->htmlOuter();
 // 				}				 
-// 			}
-// 	  	}
+ 			}
+ 	  	}
     ?>
   </div>
   

@@ -170,6 +170,7 @@ height: 212px;
 	background-color: transparent !important;
 	 color: #FFFFFF;
      overflow: hidden; 
+cursor: pointer;
     /* max-height: 105px; */
 }
 .draggable img {

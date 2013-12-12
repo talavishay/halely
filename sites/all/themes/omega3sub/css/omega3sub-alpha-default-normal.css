@@ -32,13 +32,12 @@ display: block;
   max-height: 63px;
   display: block;
   float: none;
-  margin: 0 auto !important;
-  
+  margin: 0 auto !important;  
   width: 960px;
 }
 img#logo {
-    transform: scaleY(0.9);
- position: static;
+	transform: scaleY(0.9);
+	position: static;
 }
 h1.site-name, h2.site-name {
     margin-bottom: 0;
@@ -90,12 +89,12 @@ width: 100%;
 	-o-border-image: url(/sites/all/themes/omega3sub/images/menu_border.png) 1 0 0 repeat; 
 	border-image: url(/sites/all/themes/omega3sub/images/menu_border.png) 1 0 0 fill repeat;
 	/*border-top:1px dotted gray;*/
-  position: static;
+	position: static;
         background-color: #E1EFEF;
 } 
 #block-system-main-menu {
     margin: auto;
-    padding-right: 135px;
+/*    padding-right: 135px; */
     width: 960px;
 }
 .region-footer-first-inner > div {
@@ -111,6 +110,7 @@ width: 100%;
     margin: 0 auto !important;
     width: 824px;
   */
+  margin-right: 65px;
 }
  .menu li.leaf, 
 #block-system-main-menu .menu li.leaf, 

@@ -71,7 +71,7 @@ function onAfter(curr, next, opts, fwd) {
 Drupal.avishay.fixSlideshow = function(dialog){
 	var count = 0 ;
 	timer = window.setInterval(function(){		
-		if(count < 10){
+		if(count < 20){
 			var h = jQuery("div.field-items img", dialog).first().height();
 			if(h > 100){
 				jQuery(".field-name-field-gallery .field-items", dialog).once().animate({
