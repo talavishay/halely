@@ -27,13 +27,16 @@ body, html{
 }
 body{
   background-color: #E1EFEF;
-
+}
+body.responsive-layout-fluid {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 /* body.front #region-menu{
 	position: absolute;
 } */
 body.responsive-layout-fluid {
-  min-width: 100%;
+  /*min-width: 100%;*/
 }
 /* body.responsive-layout-narrow .region ,
 body.responsive-layout-narrow .zone {
@@ -216,6 +219,7 @@ ba
 .isotope-element {
 margin: .4%;
 width: 24%;
+z-index: 0;
 }
 
 
