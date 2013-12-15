@@ -240,7 +240,8 @@ z-index: 0;
 }
 
 .responsive-layout-fluid .field-name-body p {
-	line-height:15px !important;
+	line-height: 19px !important;
+margin-bottom: 0px;
 }
 .responsive-layout-fluid .field-name-body .field-item {
     letter-spacing: 1px !important;
@@ -294,6 +295,7 @@ display: block;
 .responsive-layout-fluid.page-node-213 tr:last-child td {
   height: 80px;
  text-align: right !important;
+ margin-top:14px;
 }
 .responsive-layout-fluid.page-node-213 .field-name-field-background.field-type-image {
     bottom: 34px;

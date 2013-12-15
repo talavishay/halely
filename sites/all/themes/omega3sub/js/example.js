@@ -476,6 +476,13 @@ jQuery(document).ready(function() {
 			jQuery("#block-block-2 p a[href^=mail]", main_menu).not(".done").after(jQuery('#about').clone().attr("id", "about_mobile")).addClass("done");
 			
 			jQuery(".isotope-element").unbind("mouseout mouseover");
+var table = jQuery("#node-about-213 table");
+if(table.length === 1){
+    var td_2 = jQuery("tr:nth-child(2) td:last-child", table);
+    var td_3 = jQuery("tr:nth-child(3) td:first-child ", table);
+    jQuery("tr:nth-child(2)", table).append(td_3);
+    jQuery("tr:nth-child(3)", table).prepend(td_2);
+}
 		} 
 		if(d.to === "normal"){
 			jQuery("#block-system-main").after(	jQuery("#block-block-2"));
