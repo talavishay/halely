@@ -1,4 +1,124 @@
 /* This file will hold styles that are loaded using the same media query as the wide grid. */
-body{
-background-color: red;
+/*
+ * ==========================================================
+ * Container
+ * ==========================================================
+ */
+
+body {
+  min-width: 0px !important ;
+ 
+}
+.zone-content.container-12,
+.zone-footer.container-12,
+.container-12 {
+  width: 960px ;
+}
+.container-12 .grid-10 {
+  width: 780px !important ;
+}
+#zone-header {
+  width: 100% ;
+}
+.page-בלוג #zone-header {
+  width: 960px !important;
+}
+ .container-12 .grid-12 {
+  width: 940px !important;
+}
+.container-12 .grid-8 {
+  width: 620px !important;
+}
+
+
+
+
+
+/*
+*  LOGO & SITE-NAME
+*/
+
+.logo-img{
+	height:auto;
+}
+.site-name-slogan {
+	margin-bottom: 12px;
+	margin-right: 74px;
+}
+img#logo {
+	transform: scaleY(0.9);
+	position: static;
+}
+#region-branding {
+  
+  width: 960px !important;
+}
+
+
+/*menu*/
+#region-menu .menu {
+  
+  margin-right: 65px;
+}
+#region-menu .menu li:nth-child(7){
+	margin-right: 63.7px;
+
+}
+/*reshet*/
+.front #region-content.grid-12 {
+    width: 896px !important;
+}
+.grid-10 .view-reshet {
+width:762px;
+margin-top:5px;
+}
+.isotope, .isotope .isotope-item ,
+.masonry, .masonry .masonry-brick {
+  transition-duration: 1.5s;
+}
+.isotope-element .views-field-title.fadein,
+.isotope-element .views-field-type.fadein{
+    transition-duration: 0.5s;
+     
+}
+.isotope-element .views-field-title.fadeout,
+.isotope-element .views-field-type.fadeout{
+    transition-duration: 1s;
+     
+}
+/*
+ * sidebar first
+ * */
+aside#region-sidebar-first {
+  left: -7px;
+}
+.grid-10 #block-block-2 {
+    margin-left: 0px;
+  
+}
+/*
+*region-footer-first
+*/
+#region-footer-first{
+width: 900px;
+}  
+/*about*/  
+ .page-node-213 .field-name-body {
+  padding-left:184px;   
+}
+.page-node-213 .field-item.even > div:nth-of-type(3) {
+ left: 0;
+margin-left: 0;
+position: absolute;
+top: 25px;
+}
+.page-node-213 .field-item.even > div:nth-of-type(4) {
+top: 191px;
+}
+.page-node-213 .field-item p:last-child {
+  position: static;
+}
+.page-node-213 .field-item p:last-child span {
+  bottom: 21px;
+padding-left: 16%;
 }

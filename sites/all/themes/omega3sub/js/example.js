@@ -81,7 +81,7 @@ Drupal.avishay.fixSlideshow = function(dialog){
 					window.clearInterval(timer);
 				});	
 			}
-			console.log(h);
+			//console.log(h);
 //			jQuery(".field-name-field-gallery .field-items", dialog).height();
 //			console.log("tick");
 			count++;
@@ -180,6 +180,10 @@ function open_dialog(nid) {
 		var width = 760, within = "#isotope-container";
 		if (Drupal.omega.getCurrentLayout() == "fluid"){
 			width = "100%";
+			within = "body";
+		}
+		if (Drupal.omega.getCurrentLayout() == "normal"){
+			width = "90%";
 			within = "body";
 		}
 	jQuery('<div></div>').dialog({
@@ -461,10 +465,10 @@ jQuery(document).ready(function() {
 	jQuery("#menu-toggle").live("click", function(e){
 		jQuery('.menu_toggle').slideToggle("fast");
 		jQuery(e.currentTarget).toggleClass("open");
-		console.log("click");
+		//console.log("click");
 	});
 	jQuery('body').bind('responsivelayout', function(e, d) {//    console.log(e);//    console.log(d);	
-		console.log(d);
+//		console.log(d);
 		if(d.to === "narrow" || d.to === "fluid"){
 			jQuery("#zone-content").append(jQuery("#region-menu"));
 			var img = jQuery('<a id="menu-toggle" class="open"><img src="/sites/all/themes/omega3sub/images/icon-menu-down.png"/></a>');
@@ -497,7 +501,7 @@ if(table.length === 1){
 		jQuery(window).trigger('hashchange');
 	});
 	jQuery(window).trigger('hashchange');
-	
+	if(jQuery("html").hasClass("touch")){
 	var supportsOrientationChange = "onorientationchange" in window,
 	 orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
 	 window.addEventListener(orientationEvent, function(e) {
@@ -507,7 +511,8 @@ if(table.length === 1){
 		 }
 //		 window.alert(window.location.pathname );
 	 });
-//	 
+}
+//	 }
 //	 jQuery(".רשת").filter(":odd").css("direction","ltr")
 //	 jQuery(".רשת").filter(":odd").children().filter(".views-field").css({"right":"0","left":"auto","text-align":"right"})
 }); 

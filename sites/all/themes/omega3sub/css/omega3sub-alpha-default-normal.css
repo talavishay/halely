@@ -1,7 +1,30 @@
 /* This file will hold styles that are loaded using the same media query as the normal grid. */
 /* If you are using the default media queries provided by Omega, these styles will also
  *  apply to the widescreen layout unless they are overridden by the widescreen styles. */
-* {
+/*
+ * ==========================================================
+ * Container
+ * ==========================================================
+ */
+
+ body.responsive-layout-normal {
+  max-width: 768px;
+}
+
+.responsive-layout-normal  .container-12 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 768px;
+  
+}
+.responsive-layout-normal .container-12 .grid-12 {
+  width: 748px;
+}
+.responsive-layout-normal .container-12 .grid-10 {
+  width: 593px;
+}
+
+.responsive-layout-normal * {
     max-width: inherit; 
 }
 html,body{
@@ -33,11 +56,13 @@ display: block;
   display: block;
   float: none;
   margin: 0 auto !important;  
-  width: 960px;
+ 
 }
 img#logo {
-	transform: scaleY(0.9);
-	position: static;
+	left: -30px;
+position: relative;
+top: -1px;
+transform: scale(0.73) scaleY(1);
 }
 h1.site-name, h2.site-name {
     margin-bottom: 0;
@@ -52,8 +77,8 @@ h1.site-name span, h2.site-name span {
 }
 .site-name-slogan {
   float: right;
-margin-bottom: 12px;
-margin-right: 74px;
+margin-bottom: 9px;
+margin-right: 26px;
 }
 #region-branding a {
   display: block;
@@ -69,7 +94,7 @@ top: 6px;
   left: 0;
 z-index: 1;
   background-color: rgba(0, 0, 0, 0);
-    height: auto;
+    height: 62px;
 width: auto;
 }
 
@@ -81,7 +106,7 @@ width: auto;
 height: 30px;
 margin: 0;
 padding: 0;
-width: 100%;
+width: 100% !important;
 	border-style: solid; 
 	border-width: 1px 0px 0px; 
 	-moz-border-image: url(/sites/all/themes/omega3sub/images/menu_border.png) 1 0 0 repeat; 
@@ -101,6 +126,13 @@ width: 100%;
   display: inline-block;
   float: right;
 }
+#region-footer-first {
+display: block;
+float: none;
+margin: 0 auto;
+   width: 740px;
+}
+
 #block-system-main-menu--2{
 	float: left;
 }
@@ -110,7 +142,7 @@ width: 100%;
     margin: 0 auto !important;
     width: 824px;
   */
-  margin-right: 65px;
+  margin-right: 17px;
 }
  .menu li.leaf, 
 #block-system-main-menu .menu li.leaf, 
@@ -141,7 +173,7 @@ padding-right: 4px;
 }
 
 #region-menu .menu li:nth-child(7){
-	margin-right: 63.7px;
+	margin-right: 42.7px;
 } 
 #region-menu #block-system-main-menu .menu li:nth-child(1n+7) a {
 font-size: 16px;
@@ -158,9 +190,14 @@ letter-spacing: 0.7px;
  * */
 #block-block-2 {
 	float: left;
-	font-size: 11px;
-          margin-top: 45px;
- padding:0px;
+font-size: 11px;
+margin-top: 45px;
+padding: 0;
+}
+.grid-10 #block-block-2 {
+  
+  margin-left: 69px;
+  
 }
 
 #block-block-2 p {
@@ -206,7 +243,7 @@ display:inline;
   display: block;
   float: none;
   margin: 0 auto !important;
-  width: 896px;
+  width: 680px;
 }
  .front #region-content.grid-10 {
   margin: auto 5px;
@@ -218,7 +255,7 @@ left: -30px;
  * sidebar first
  * */
 aside#region-sidebar-first {
-  left: -7px;
+  left: 17px;
 margin-left: 0;
 position: relative;
 /*top: -11.6px;*/
@@ -277,8 +314,9 @@ max-width: 762px;
 	/*min-height:330px;*/
 }
 .grid-10 .view-reshet {
-padding: 7px  8px;
-width:762px;
+padding: 7px 8px;
+width: 438px;
+margin: 20px auto 0;
 }
 .view-reshet {
         background-color: #E5E9EC;
@@ -298,20 +336,77 @@ height: 104px;
 margin: 2px;
 width: 104px;
 }
-.isotope, .isotope .isotope-item ,
-.masonry, .masonry .masonry-brick {
-  transition-duration: 1.5s;
+/*studio*/
+.responsive-layout-normal.page-node-188 .field-name-field-background img{
+border-top: 152px solid #000000;
+max-width: none;
+width: 814px !important;
 }
-.isotope-element .views-field-title.fadein,
-.isotope-element .views-field-type.fadein{
-    transition-duration: 0.5s;
-     
+.responsive-layout-normal.page-node-188 .field-type-image .field-item {
+   overflow: hidden;
 }
-.isotope-element .views-field-title.fadeout,
-.isotope-element .views-field-type.fadeout{
-    transition-duration: 1s;
-     
+.responsive-layout-normal.page-node-188 #region-content {
+  margin-top: 24px;
 }
+ .responsive-layout-normal.page-node-188 .region-inner {
+  padding: 0 12px;
+}
+.responsive-layout-normal.page-node-188 .field.field-name-body {
+  background-position: 358px 29px !important;
+  width: 335px !important;
+}
+ .responsive-layout-normal.page-node-188 .field-name-body .field-items .field-item p {
+   padding-left: 9px;
+}
+
+.responsive-layout-normal.page-node-188 .grid-10 #block-block-2 ,
+.responsive-layout-normal.page-node-213 .grid-10 #block-block-2 {
+   margin-left: 0px;
+}
+/*about*/
+.responsive-layout-normal.page-node-213 .field-name-field-background img {
+  border-top: 197px solid #000000;
+left: 197px;
+position: relative;
+width: auto;
+}
+.responsive-layout-normal.page-node-213 .field-name-field-background img,
+.responsive-layout-normal.page-node-213 .field-name-field-background {
+overflow: hidden;
+}
+  .page-node-213 .field-name-body {
+  padding: 20px;
+}
+ 
+.page-node-213 .field-item.even > p {
+  float: right;
+  margin-bottom: 1px;
+  width: 100%;
+}
+
+.page-node-213 .field-item p:last-child span {
+  padding-left: 11%;
+  position: relative;
+}
+.page-node-213 .field-item.even > div {
+  display: block;
+float: right;
+margin-bottom: 4%;
+margin-left: 50%;
+width: 50%;
+}
+.page-node-213 .field-item.even > div:nth-of-type(4) {
+  left: 0;
+  margin-left: 0;
+  position: absolute;
+  top: 25px;
+}
+.page-node-213 .field-item p:last-child {
+  position: absolute;
+  top: 211px;
+}
+
+
 /*
  * blog
  * */
@@ -415,6 +510,13 @@ form#views-exposed-form-test-page-1 {
   position: relative;
   background-color: black;
 }
+.responsive-layout-normal.page-node-189 #region-content > div ,
+.responsive-layout-normal.page-node-213 #region-content > div {
+  padding: 28px 12px 0;
+}
+.responsive-layout-normal.page-node-189 .field-name-field-background img {
+  border-top: 312px solid #000000;
+}
 #webform-client-form-189 {
 	/*color: white;*/
 	font-size: 14px;
@@ -470,4 +572,12 @@ vertical-align: top;
 }
 .page-node-189 #page-title {
   display: none;
+}
+.responsive-layout-normal.page-node-189 #webform-component-contact {
+  margin-right: 99px;
+  margin-top: 64px;
+}
+.responsive-layout-normal.page-node-189 #webform-component-contact span {
+  display: block;
+  margin-top: 10px;
 }

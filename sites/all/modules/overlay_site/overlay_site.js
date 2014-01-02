@@ -34,7 +34,7 @@ jQuery('body:not(.ie) #zone-header').css('position','relative').append('<div id=
      
  };
  jQuery(window).bind("keyup", function(e){
-//     console.log(e.which);
+     console.log(e.which);
      if(e.ctrlKey){
         if(e.which == 40 ){
 //            console.log("down");
@@ -51,9 +51,10 @@ jQuery('body:not(.ie) #zone-header').css('position','relative').append('<div id=
      
  });
  
- // jQuery('body.front #overlay_site').css("background","url(/sites/all/modules/overlay_site/main.jpg)");
-     
- 
- // jQuery('body.front #overlay_site').css("background","url(/sites/all/modules/overlay_site/reshet-lobi.png)");
- jQuery('body.front #overlay_site').css("background","url(/sites/all/modules/overlay_site/inner.jpg)");
+ jQuery('body.front #overlay_site').css("background","url(/sites/all/modules/overlay_site/ipad_front.png)");
+  jQuery('body.page-category #overlay_site').css("background","url(/sites/all/modules/overlay_site/ipad_cat.png)");
+ jQuery('body.page-node-213 #overlay_site').css("background","url(/sites/all/modules/overlay_site/ipad_halely.png)");
+ jQuery('body.page-node-188 #overlay_site').css("background","url(/sites/all/modules/overlay_site/ipad_studio.png)");
+ jQuery('body.page-node-189 #overlay_site').css("background","url(/sites/all/modules/overlay_site/ipad_contact.png)");
+
 });

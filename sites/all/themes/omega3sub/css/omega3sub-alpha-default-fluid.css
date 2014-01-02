@@ -241,14 +241,14 @@ z-index: 0;
 
 .responsive-layout-fluid .field-name-body p {
 	line-height: 19px !important;
-margin-bottom: 0px;
+margin-bottom: 0;
 }
 .responsive-layout-fluid .field-name-body .field-item {
     letter-spacing: 1px !important;
     padding: 6px !important;
 }
 .responsive-layout-fluid .field-name-body .field-item p:first-of-type {
-    padding-left: 8px !important;
+padding-left: 8px !important;
 }
 .responsive-layout-fluid #node-about-188 .field-name-body {
     background-position: right 28px;
@@ -278,9 +278,23 @@ height: 100px;
 position: relative;
 z-index: 10;
 }
+.responsive-layout-fluid.page-node-213 .zone-content.container-12 {
+  padding-top: 5px;
+}
 .responsive-layout-fluid.page-node-213{
 	background-color:#000;
 
+}
+.responsive-layout-fluid.page-node-213 .field-name-body.field-type-text-with-summary.field-label-hidden {
+  padding-bottom: 27px;
+padding-right: 2px;
+}
+.responsive-layout-fluid.page-node-213 .field-name-body p {
+	
+text-align: right !important;
+}
+.responsive-layout-fluid.page-node-213 .field-name-body .field-item p:first-of-type {
+    margin-bottom: 8px;
 }
 .responsive-layout-fluid #node-about-213 table td {
 display: block;

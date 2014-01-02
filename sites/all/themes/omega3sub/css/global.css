@@ -5,9 +5,7 @@
 font-family: "Alef Hebrew",“Helvetica Neue”,Helvetica,Arial,sans-serif !important;
 }
 body{
-/*
-opacity: 0;
-*/
+min-width: 0px !important;
 }
 .field-name-body img {
   max-width: 100%;
@@ -502,13 +500,6 @@ margin-left: 8px !important;
 	border-top: 2px solid #CFDCDC;
 }
 	
-#region-footer-first{
-	
-left: 34px;
-padding: 0 55px;
-position: relative;
-width: 925px;
-}	
 #block-block-1 {
   color: #EEAA2E;
 }
@@ -730,6 +721,13 @@ width: 100%;
 .node-about .field-name-body {
     position: absolute;
 top: 0;
+}
+.page-node-213 .field-items {
+  color: #FFFFFF;
+font-size: 12px;
+letter-spacing: 1.5px;
+line-height: 24px;
+position: relative;
 }
 #node-about-188  .field-name-body  {
 background: url("/sites/all/themes/omega3sub/images/studio-bird.png") no-repeat scroll 570px 29px transparent;

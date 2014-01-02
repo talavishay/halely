@@ -13,7 +13,7 @@
  drupal_add_js(drupal_get_path("theme", "omega3sub").'/js/example.js');
  drupal_add_library('system', 'jquery.bbq');
  drupal_add_library('system', 'ui.dialog');
- drupal_add_js("http://desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js");
+// drupal_add_js("http://desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js");
  if (module_exists('libraries')) {
     $path = libraries_get_path('jquery.cycle');
     if (file_exists($path . '/jquery.cycle.all.min.js')) drupal_add_js($path . '/jquery.cycle.all.min.js');
